@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <title>CONCESSIONAIRE BIOSCAR</title>
+
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+
+      <!--------------------------ANGULAR LIBRARIES-------------------------------->
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+
+
+      <!--------------------------MAPBOX LIBRARIES-------------------------------->
+      <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+      <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+
+
+      <!-------------------------TOASTR ANGULAR----------------------------------->
+      <link rel = "stylesheet" href = "https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+      <script src = "https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+
+      <!-------------------------FIREBASE - social login-------------------------->
+      <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
+
+      <!-------------------------CAROUSEL HOME BRANDS-------------------------->
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>           
+      <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+
+      <link rel="icon" href="views/images/logo3.png" type="images/png" />
+      <link rel="stylesheet" href="views/css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      
+
+      <!--------------------------CSS-------------------------------->
+      <link rel="stylesheet" href="views/css/bootstrap.min.css">
+      <link rel="stylesheet" href="views/css/slick.css">
+      <link rel="stylesheet" href="views/css/responsive.css">
+      <link href="frontend/views/css/style.css" rel="stylesheet" type="text/css" />
+      <link href="frontend/views/css/style2.css" rel="stylesheet" type="text/css" />
+      <link href="frontend/views/css/style3.css" rel="stylesheet" type="text/css" />
+
+      <!-------------------------LIBRARIES PLANTILLA------------------>
+      <script src="frontend/views/js/jquery.min.js"></script>
+      <script src="frontend/views/js/popper.min.js"></script>
+      <script src="frontend/views/js/bootstrap.bundle.min.js"></script>
+      <script src="frontend/views/js/jquery-3.0.0.min.js"></script>
+      <script src="frontend/views/js/plugin.js"></script>
+      <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
+      <script src="frontend/views/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="frontend/views/js/custom.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+      <!-------------------------JS FILES--------------------------->
+      <script src="frontend/modules/search/views/js/ctrl_search.js"></script>
+      <script src="frontend/views/js/translate.js"></script>
+      <script src="frontend/views/js/main.js"></script>
+      <script src="frontend/views/js/activity.js"></script>
+      <script src="frontend/views/js/plugin.js"></script>   
+      <script src="frontend/modules/login/view/js/ctrl_login.js"></script>
+      <script src="frontend/modules/login/view/js/ctrl_register.js"></script>
+      <script src="frontend/modules/home/view/js/ctrl_home.js"></script>
+
+   </head>
+   
+   <!-- body -->
+   <body>
+      <div ng-include = '"frontend/view/includes/menu.view.html"'></div>
+      <div ng-view autoscroll = "true"></div>
+      <div ng-include = '"frontend/view/includes/footer.view.html"'></div>
+   </body>
+</html>

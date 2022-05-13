@@ -1,0 +1,33 @@
+<form id = "login__form" method="post">
+<div class="login">
+  <div class="form">
+    <h2>Welcome</h2>
+    <div class="form__input">
+    <input type="text" placeholder="Enter Username" id="username" name="username" required>
+    <br>
+    <font color="red">
+      <span id="error_username" class="error"></span>
+    </font>
+    </div>
+    <div class="form__input">
+    <input type="password" placeholder="Enter Password" id="password" name="password" required>
+    <br>
+    <font color="red">
+      <span id="error_password" class="error"></span>
+    </font>
+    </div>
+    <div class="container">
+      <a class="button" id="login" type="button" href="?modules=login&op=list_register">Create new account</a>
+      <a class="recover_passw" id="recover_passw" type="button">FORGOT THE PASSWORD?</a>
+    </div>
+    <div class="button_container">
+      <input class="button-login" id="login" type="button" value = "Enter"/>
+    </div>
+    <div class="social_login">
+      <a class="social" id="social">OR</a><br>
+      <input class="button-google" id="button-google" type="button" value = "google"/>
+      <input class="button-git" id="button-git" type="button" value = "git"/>
+    </div>
+  </div>
+</div>
+</form>
