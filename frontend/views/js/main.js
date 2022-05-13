@@ -28,11 +28,11 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC_ANGULAR.JS" + link;
 }
 
 function friendlyURLImages(url) {
-    return "http://localhost/FRAMEWORK_PHP_OO_MVC/" + url;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC_ANGULAR.JS/" + url;
 }
 
 

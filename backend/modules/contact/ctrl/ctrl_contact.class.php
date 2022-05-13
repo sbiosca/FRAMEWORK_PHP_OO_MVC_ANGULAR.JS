@@ -1,11 +1,6 @@
 <?php
 
     class ctrl_contact {
-        
-        function view() {
-            common::load_view('top_page_contact.php', VIEW_PATH_CONTACT . 'contact_list.html');
-        }
-        
         function send_contact() {
             $message = ['type' => 'contact',
 						'inputName' => $_POST['name'], 

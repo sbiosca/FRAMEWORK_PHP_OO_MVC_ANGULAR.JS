@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteBase /FRAMEWORK_PHP_OO_MVC/
+RewriteBase /FRAMEWORK_PHP_OO_MVC_ANGULAR.JS/backend/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

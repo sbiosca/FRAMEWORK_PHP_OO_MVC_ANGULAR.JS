@@ -1,6 +1,6 @@
 <?php
     //PROJECT
-    define('PROJECT', '/FRAMEWORK_PHP_OO_MVC/');
+    define('PROJECT', '/FRAMEWORK_PHP_OO_MVC_ANGULAR.JS/backend/');
     
     //ROOT_PROJECT
     define('SITE_DOC_ROOT', $_SERVER['DOCUMENT_ROOT'] . PROJECT);
