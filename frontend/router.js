@@ -5,10 +5,24 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when ("/contact", {
         templateUrl: "frontend/modules/contact/views/contact_list.html", 
         controller: "ctrl_contact"
-    }).otherwise ("/home", {
+    }).when ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 
         controller: "ctrl_home",
         resolve: {
+            carrousel_brand: function (services) {
+                return services.get('home','carrousel_brand');
+            },
+            categ: function (services) {
+                return services.get('home','categ');
+            },
+            type: function (services) {
+                return services.get('home','type');
+            }
+        }
+    }).otherwise ("/home", {
+        templateUrl: "frontend/modules/home/views/home.html", 
+        controller: "ctrl_home",
+        /*resolve: {
             carousel: function (services) {
                 return services.get('home','carousel');
             },
@@ -18,11 +32,11 @@ app.config(['$routeProvider', function ($routeProvider) {
             brands: function (services) {
                 return services.get('home','brands');
             }
-        }
+        }*/
     });
 
 }]);
 
 app.run(function(){ 
-    console.log("HOLLAAAA");
+    console.log("HOLLAAAA_ RUN");
 });

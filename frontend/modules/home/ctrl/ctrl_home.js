@@ -1,4 +1,4 @@
-function loadbrands(load = 0) {
+/*function loadbrands(load = 0) {
     let items = 12;
     let loaded = load;
 
@@ -185,4 +185,17 @@ function loadDivs() {
 $(document).ready (function (){
     loadDivs(); 
 });
+*/
 
+app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, type/*, loadall, news*/) {
+  /*let items = 12;
+  let loaded = load;
+  */
+
+  $scope.carousel = carrousel_brand;
+  $scope.categ = categ;
+  $scope.type = type;
+
+  console.log($scope.carousel);
+
+});

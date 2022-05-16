@@ -122,6 +122,8 @@ function logout () {
             localStorage.removeItem('token');
             localStorage.removeItem('url');
             window.location.href = friendlyURL('?modules=home&op=view');
+            //ANGULAR: $location.path('\');
+            //ANGULAR: angular.element('#').remove --> $scope / $rootscope
         }).catch(function (error) {
             console.log(error);
         });
