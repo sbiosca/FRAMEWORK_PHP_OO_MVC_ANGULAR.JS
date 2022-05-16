@@ -69,10 +69,10 @@ app.controller('ctrl_contact', function($scope, services, toastr) {
     $scope.regMessage = /^[A-Za-z0-9-\s.]{15,200}$/;
 
 	$scope.sendEmail = function() {
-        let email = {'name': $scope.full_name, 'email': $scope.user_email, 'matter': $scope.email_matter, 'message': $scope.email_message};
+        let email = {'name': "sergi", 'email': $scope.user_email, 'matter': $scope.email_matter, 'message': $scope.email_message};
         services.post('contact', 'send_contact', email)
         .then(function(response) {
-            if (response == 'true') {
+            if (response == '"done"') {
                 toastr.success('The email has been sended, you will receive an answer as soon as posible.' ,'Email sended');
                 $scope.full_name = null;
                 $scope.user_email = null;
@@ -81,6 +81,7 @@ app.controller('ctrl_contact', function($scope, services, toastr) {
             }else {
                 toastr.error('Something happend when trying to send.' ,'Error');
             }// end_else
+			console.log(response);
         }, function(error) {
             console.log(error);
         });// end_request

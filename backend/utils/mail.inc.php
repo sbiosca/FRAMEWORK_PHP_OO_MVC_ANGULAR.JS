@@ -4,6 +4,7 @@
             switch ($email['type']) {
                 case 'contact';
                     $email['toEmail'] = 'bioscar.soporte@gmail.com';
+                    $email['inputEmail'] = 'bioscar.soporte@gmail.com';
                     break;
                 case 'validate';
                     $email['fromEmail'] = 'bioscar.soporte@gmail.com';

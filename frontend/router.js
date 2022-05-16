@@ -5,12 +5,24 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when ("/contact", {
         templateUrl: "frontend/modules/contact/views/contact_list.html", 
         controller: "ctrl_contact"
-    }).otherwise ("", {
-
+    }).otherwise ("/home", {
+        templateUrl: "frontend/modules/home/views/home.html", 
+        controller: "ctrl_home",
+        resolve: {
+            carousel: function (services) {
+                return services.get('home','carousel');
+            },
+            categoria: function (services) {
+                return services.get('home','categoria');
+            },
+            brands: function (services) {
+                return services.get('home','brands');
+            }
+        }
     });
 
 }]);
 
-app.run(function($rootScope, services, services_search){ 
+app.run(function(){ 
     console.log("HOLLAAAA");
 });
