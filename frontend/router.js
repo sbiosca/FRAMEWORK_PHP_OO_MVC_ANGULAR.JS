@@ -19,24 +19,30 @@ app.config(['$routeProvider', function ($routeProvider) {
                 return services.get('home','type');
             }
         }
-    }).otherwise ("/home", {
+    })/*.when ("/shop", {
+        templateUrl: "frontend/modules/shop/views/shop.html", 
+        controller: "ctrl_shop",
+        resolve: {
+        }})*/
+    .otherwise ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 
         controller: "ctrl_home",
-        /*resolve: {
-            carousel: function (services) {
-                return services.get('home','carousel');
+        resolve: {
+            carrousel_brand: function (services) {
+                return services.get('home','carrousel_brand');
             },
-            categoria: function (services) {
-                return services.get('home','categoria');
+            categ: function (services) {
+                return services.get('home','categ');
             },
-            brands: function (services) {
-                return services.get('home','brands');
+            type: function (services) {
+                return services.get('home','type');
             }
-        }*/
+        }
     });
 
 }]);
 
 app.run(function(){ 
     console.log("HOLLAAAA_ RUN");
+
 });

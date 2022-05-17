@@ -192,10 +192,14 @@ app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, ty
   let loaded = load;
   */
 
-  $scope.carousel = carrousel_brand;
-  $scope.categ = categ;
-  $scope.type = type;
+  
+  $scope.carrousels = carrousel_brand;
+  $scope.categs = categ;
+  $scope.types = type;
 
-  console.log($scope.carousel);
+  
+  //news()
+  console.log($scope.categs);
+  
 
 });
