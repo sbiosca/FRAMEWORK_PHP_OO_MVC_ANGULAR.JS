@@ -19,12 +19,20 @@ app.config(['$routeProvider', function ($routeProvider) {
                 return services.get('home','type');
             }
         }
-    })/*.when ("/shop", {
+    }).when ("/shop", {
         templateUrl: "frontend/modules/shop/views/shop.html", 
         controller: "ctrl_shop",
         resolve: {
-        }})*/
-    .otherwise ("/home", {
+            list_cars: function (services) {
+                return services.get('shop','list_cars');
+            },
+            filters: function (services) {
+                return services.get('shop','filters');                
+            }
+            }
+    
+        }
+    ).otherwise ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 
         controller: "ctrl_home",
         resolve: {

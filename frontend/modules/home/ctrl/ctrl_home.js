@@ -203,3 +203,4 @@ app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, ty
   
 
 });
+

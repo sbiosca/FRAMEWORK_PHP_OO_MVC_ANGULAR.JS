@@ -344,13 +344,17 @@ body {
 
   .caret {
     position: relative;
-    left: 4cm;
+    left: 10cm;
     border-style: groove;
     border-radius: 2%;
     width: 800px;
     height: 250px;
     float: left;
-   
+  }
+
+  .cars_elements{
+    width: 800px;
+    height: 250px;
   }
 
   /*.caret:hover {
@@ -368,7 +372,7 @@ body {
   .caret2 {
     background-color: white;
     position: relative;
-    left: 6cm;
+    left: 8cm;
     border-style: ridge;
     border-radius: 8%;
     width: 400px;
@@ -542,8 +546,8 @@ body {
    .div_form {
      background-color: rgb(184, 204, 184);
      border: 2px groove rgb(226, 215, 180);
-     position: sticky;
-     top: 10px;
+     position: relative;
+     top: -19.5cm;
    }
 
 
@@ -651,7 +655,7 @@ body {
    /*PAGINATION*/
    #pagination {
     position: relative;
-    top: 21cm;
+    top: auto;
     left: 13cm;
   }
   .button-pagi1:hover, .button-pagi2:hover ,.button-pagi3:hover {

@@ -1,16 +1,58 @@
 <br><br>
 <div id="all">
 <div id="cars" class="all_cars">
+    <div class="services__content">
+        <div class="cars_elements" ng-repeat="car in cars">
+            <div class="caret" id="">
+                <p id="p_img"><img id="" class="img_car" src="frontend/views/images/cars/{{car.car_img}}" style="max-width: 100%;"></img></p>
+                <div class="div-likes" id="">
+                    <p id="" class="icon-like">&#x2665</p>
+                </div><br>
+                <p id="p_price">{{car.price}}€</p><br>
+                <p id="p_brand">{{car.brand_name}} {{car.model_name}}</p><br>
+                <p id="p_cambio">{{car.exchange}} | {{car.type_name}} | {{car.category_name}}</p><br><br>
+                <p id="p_date">{{car.date}} {{car.km}} KM <p id="p_city">{{car.city}}</p></p><br>
+            </div>
+        </div>
+    </div>
     <div id="form" class="form">
         <form autocomplete="on" method="post" name="filter" id="filter"></form>
+        <div class='div_form'>
+            <select class='brandss' id='selc'>
+                <optgroup id='bran' class='select1' label='ALL BRANDS'>
+                    <option selected >SELECT THE BRAND</option>
+                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="filter in filters">{{filter.brand_name}}</option>
+                </optgroup>
+            </select><br><br>
+            <select class='modelss' id='selc'>
+                <optgroup class='select2' label='ALL MODELS'>
+                    <option selected >SELECT THE MODEL</option>
+                    <option id='model' value='{{filter.model_name}}' ng-repeat="filter in filters">{{filter.model_name}}</option>
+                </optgroup>
+            </select><br><br>
+            <select class='colorss' id='selc'>
+                <optgroup class='select3' label='ALL COLORS'>
+                    <option selected >SELECT THE COLOR</option>
+                    <option id='color' value='{{filter.color}}' ng-repeat="filter in filters">{{filter.color}}</option>
+                </optgroup>
+            </select><br><br>
+            <input class='button' name='Submit' type='button' id='filter' value='Filtrar'/>
+            <button id='remove-filters'>
+                <img class='remove-filter' src="frontend/views/images/filter-remove.png">
+            </button>
+        </div>
     </div>
     <div id="ctrl-map">
         <div id="map"></div>
-    </div>
-    <div id="pagination"></div> 
+    </div><br>
+    <div id="pagination">
+        <button class="button-pagi1"><p>1</p></button>
+        <button class="button-pagi2"><p>2</p></button>
+        <button class="button-pagi3"><p>3</p></button>
+    </div> 
 </div>
 </div>
-
 <div id="only_coche" class="only_car"> 
     <div id="map"></div>
 </div>
+<br><br>

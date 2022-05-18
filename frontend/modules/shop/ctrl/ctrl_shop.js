@@ -1,4 +1,4 @@
-function ajaxForSearch(url, items = 0, total, search) {
+/*function ajaxForSearch(url, items = 0, total, search) {
     //var total = 0;
     console.log(search);
     ajaxPromise(url, 'POST' , 'JSON', {total: total, items: items, search: search})
@@ -527,8 +527,8 @@ function read_likes_user(data,user) {
 
 function click_likes(user){
     $(document).on("click",".div-likes",function() {
-        /*$('<p></p>').attr('class',"icon-like").appendTo(".caret")
-            .html("")*/
+        $('<p></p>').attr('class',"icon-like").appendTo(".caret")
+            .html("")
             var id = this.getAttribute('id');
             if (user == null) {
                 toastr.error("DEBES INICIAR SESION PARA HACER LIKE", {
@@ -600,4 +600,18 @@ function load_content() {
 
 $(document).ready (function (){
     load_content();
+});*/
+
+app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filters, services_shop) {
+
+    $scope.list = list_cars;
+    $scope.filters = filters;
+
+    console.log($scope.filters);
+
+    ///services_shop.list_cars();
+
+    services_shop.load_pagination();
+    
+
 });

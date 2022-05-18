@@ -1,9 +1,6 @@
 <?php
 
 class ctrl_shop {
-    function view() {
-        common::load_view('top_page_shop.php', VIEW_PATH_SHOP . 'shop.html');
-    }
     function filters() {
         echo json_encode(common::load_models('shop_model', 'get_filters'));
     }
