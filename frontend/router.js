@@ -28,9 +28,11 @@ app.config(['$routeProvider', function ($routeProvider) {
             },
             filters: function (services) {
                 return services.get('shop','filters');                
+            },
+            pagi: function (services) {
+                return services.get('shop','count_pagination');
             }
             }
-    
         }
     ).otherwise ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 

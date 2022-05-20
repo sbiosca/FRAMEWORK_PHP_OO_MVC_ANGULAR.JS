@@ -336,6 +336,7 @@ function remove_filters() {
         localStorage.removeItem('filters');
         //window.location.href = friendlyURL('?modules=shop&op=view');
         window.location.href = '?modules=shop&op=view';
+
     });
 }
 
@@ -602,16 +603,31 @@ $(document).ready (function (){
     load_content();
 });*/
 
-app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filters, services_shop) {
+app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filters, pagi, services_shop) {
 
     $scope.list = list_cars;
     $scope.filters = filters;
+    $scope.pagination = pagi;
 
-    console.log($scope.filters);
+    $scope.show_details = false;
+    console.log($scope.show_details);
 
     ///services_shop.list_cars();
 
-    services_shop.load_pagination();
+    services_shop.list_cars($scope.pagination);
+
+    $scope.load_pagination1 = function() {
+        services_shop.load_pagination1($scope.pagination);
+    }
+    
+    $scope.load_pagination2 = function() {
+        services_shop.load_pagination2($scope.pagination);
+    }
+
+    $scope.details = function(id) {
+        services_shop.details(id);
+    }
+    
     
 
 });
