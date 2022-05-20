@@ -29,8 +29,8 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
        console.log(id);
        services.post('shop', 'list_one_cars', {id : id})
        .then(function(response) {
-          console.log(response);
-          $rootScope.onecars = response;
+            $rootScope.onecars_data = response;
+            $rootScope.onecars = response;            
        }, function(error) {
            console.log(error);
        });

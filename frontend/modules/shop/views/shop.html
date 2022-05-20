@@ -1,6 +1,6 @@
 <br><br>
 <div id="all">
-<div id="cars" class="all_cars" >
+<div id="cars" class="all_cars" ng-show="show_list_car">
     <div class="services__content">
         <div class="cars_elements" ng-repeat="car in cars">
             <div class="caret" id="">
@@ -52,12 +52,12 @@
     </div> 
 </div>
 </div>
-<div id="only_coche" class="only_car" ng-repeat="onecar in onecars"> 
+<div id="only_coche" class="only_car" ng-repeat="onecar in onecars_data | limitTo : 1" ng-show="show_only_car"> 
     <div class="caret2">
         <p class='p_detail'>{{onecar.price}} {{onecar.brand_name}} {{onecar.model_name}}
             {{onecar.doors}}p<br> {{onecar.category_name}}</p>
     </div>
-    <div class='div_only_car'>
+    <div class='div_only_car' ng-repeat="onecar in onecars">
         <img class='img_only_car' src="frontend/views/images/cars/{{onecar.img}}" style = 'width: 110%; height: 150px;'></img>
     </div>
     <div class='button1'></div> 

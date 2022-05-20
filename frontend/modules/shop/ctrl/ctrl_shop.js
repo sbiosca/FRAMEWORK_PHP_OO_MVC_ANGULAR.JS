@@ -609,12 +609,13 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     $scope.filters = filters;
     $scope.pagination = pagi;
 
-    $scope.show_details = false;
-    console.log($scope.show_details);
+    $scope.show_only_car = false;
+    $scope.show_list_car = true;
 
     ///services_shop.list_cars();
 
     services_shop.list_cars($scope.pagination);
+
 
     $scope.load_pagination1 = function() {
         services_shop.load_pagination1($scope.pagination);
@@ -626,6 +627,8 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
 
     $scope.details = function(id) {
         services_shop.details(id);
+        $scope.show_only_car = true;
+        $scope.show_list_car = false;
     }
     
     
