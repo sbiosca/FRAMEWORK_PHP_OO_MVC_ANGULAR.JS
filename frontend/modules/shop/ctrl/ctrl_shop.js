@@ -608,10 +608,50 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     $scope.list = list_cars;
     $scope.filters = filters;
     $scope.pagination = pagi;
-
     $scope.show_only_car = false;
     $scope.show_list_car = true;
 
+    $scope.filter_cars = function(value, key) {
+        console.log("FILTER SELECTED: " + " " + value + " " + key)
+        var filter_push = [];
+        var brand = [];
+        var model = [];
+        var color = [];
+
+        if(key == "brand"){
+            if(!brand.includes(value)){
+                brand.push(value);
+            }else{
+                i = brand.indexOf(value);
+                brand.splice( i, 1 );
+            }
+        }else if(key == "model"){
+            if(!model.includes(value)){
+                model.push(value);
+            }else{
+                i = model.indexOf(value);
+                model.splice( i, 1 );
+            }
+        }else if(key == "color"){
+            if(!color.includes(value)){
+                color.push(value);
+            }else{
+                i = color.indexOf(value);
+                color.splice( i, 1 );
+            }
+        }
+
+        if(brand.length != 0){
+            filter_push.push({key : 'brand', value : brand});
+        }
+        if(model.length != 0){
+            filter_push.push({key : 'model', value : model});
+        }
+        if(color.length != 0){
+            filter_push.push({key : 'color', value : color});
+        }
+
+    }
     ///services_shop.list_cars();
 
     services_shop.list_cars($scope.pagination);

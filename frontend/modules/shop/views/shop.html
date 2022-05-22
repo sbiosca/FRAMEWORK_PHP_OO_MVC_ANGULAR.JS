@@ -21,7 +21,7 @@
             <select class='brandss' id='selc'>
                 <optgroup id='bran' class='select1' label='ALL BRANDS'>
                     <option selected >SELECT THE BRAND</option>
-                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="filter in filters">{{filter.brand_name}}</option>
+                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="filter in filters" >{{filter.brand_name}}</option>
                 </optgroup>
             </select><br><br>
             <select class='modelss' id='selc'>
@@ -36,7 +36,7 @@
                     <option id='color' value='{{filter.color}}' ng-repeat="filter in filters">{{filter.color}}</option>
                 </optgroup>
             </select><br><br>
-            <input class='button' name='Submit' type='button' id='filter' value='Filtrar'/>
+            <input class='button' name='Submit' type='button' id='filter' value='Filtrar' ng-click="filter_cars(filter_value, filter_name)"/>
             <button id='remove-filters'>
                 <img class='remove-filter' src="frontend/views/images/filter-remove.png">
             </button>
