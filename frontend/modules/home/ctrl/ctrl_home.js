@@ -200,7 +200,17 @@ app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, ty
   
   //news()
   console.log($scope.categs);
-  
 
+  setTimeout(() => {  
+    new Swiper('.swiper', {
+        loop: true,
+        slidesPerView: 4,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      })
+    },0)
+  
 });
 

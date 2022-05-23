@@ -1,21 +1,20 @@
 <br><br>
-<div class="carousel">
-   <button class="carousel__prev">
-      <i class='bx bx-chevron-left'></i>
-   </button>
-   <div class="single-slide">
-      <div class="carousel__elements" ng-repeat="carrousel in carrousels">
-         <img class="img_brand" id='' src="frontend/views/images/logos/{{carrousel.brand_img}}">
+<strong class="brand_title">BRANDS</strong>
+<div class="swiper">
+   <div class="swiper-wrapper">
+      <div class="swiper-slide" ng-repeat="carrousel in carrousels">
+         <img class="img_brand" src="frontend/views/images/logos/{{carrousel.brand_img}}" style = "width: 50%;  height: 130px;">
+         <h1 class="brand_name">{{carrousel.brand_name}}</h1>
       </div>
    </div>
-   <button class="carousel__next">
-      <i class='bx bx-chevron-right'></i>
-  </button>
-   <div class="carousel__indicator"></div>
+   <div class="swiper-button-prev"></div>
+   <div class="swiper-button-next"></div>
 </div>
-<div class="buttonmore">
+<br><br>
+<!--<div class="buttonmore">
 <button class="loadmore" id="loadmore">Load_MORE</button>
-</div>
+</div>-->
+
 <br>
 <div id = "homePage" class = "container_categ">
    <strong>CATEGORY</strong>

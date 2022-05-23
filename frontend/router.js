@@ -52,7 +52,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-app.run(function(){ 
+app.run(function($rootScope, services, services_search){ 
     console.log("HOLLAAAA_ RUN");
+
+    services_search.load_type();
+    //services_search.load_model();
 
 });

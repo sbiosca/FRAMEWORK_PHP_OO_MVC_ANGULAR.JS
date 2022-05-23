@@ -382,15 +382,31 @@ body {
   
   .img_brand {
     width: 80px;
-    position:relative; 
+    position: relative; 
     margin: auto;
   }
 
-  .owl-carousel {
+  .brand_title {
+    position: relative;
+    left: 20cm;
+  }
+
+  .brand_name {
+    position: relative;
+    right: 2.7cm;
+  }
+
+  .swiper {
     height: 6cm;
+    width: 100%;
+    position: relative;
+    top: -2cm;
     background-color: #ffffff;
   }
   
+  .swiper-button-prev, .swiper-button-next {
+    color: #000;
+  }
 
   
   #selc {

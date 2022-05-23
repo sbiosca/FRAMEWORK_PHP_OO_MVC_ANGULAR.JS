@@ -30,11 +30,24 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
        services.post('shop', 'list_one_cars', {id : id})
        .then(function(response) {
             $rootScope.onecars_data = response;
-            $rootScope.onecars = response;            
+            $rootScope.onecars = response;
+            
+            setTimeout(() => {  
+                new Swiper('.div_only_car', {
+                    loop: true,
+                    slidesPerView: 4,
+                    navigation: {
+                      nextEl: '.swiper-button-next',
+                      prevEl: '.swiper-button-prev',
+                    },
+                  })
+                },0)            
        }, function(error) {
            console.log(error);
        });
    }
+
+   
 
 
 

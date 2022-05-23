@@ -612,7 +612,7 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     $scope.show_list_car = true;
 
     $scope.filter_cars = function(value, key) {
-        console.log("FILTER SELECTED: " + " " + value + " " + key)
+        console.log(value);
         var filter_push = [];
         var brand = [];
         var model = [];
@@ -643,6 +643,7 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
 
         if(brand.length != 0){
             filter_push.push({key : 'brand', value : brand});
+            console.log("BRAND: " + filter_push);
         }
         if(model.length != 0){
             filter_push.push({key : 'model', value : model});

@@ -21,7 +21,7 @@
             <select class='brandss' id='selc'>
                 <optgroup id='bran' class='select1' label='ALL BRANDS'>
                     <option selected >SELECT THE BRAND</option>
-                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="filter in filters" >{{filter.brand_name}}</option>
+                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="(key, filter) in filters">{{filter.brand_name}}</option>
                 </optgroup>
             </select><br><br>
             <select class='modelss' id='selc'>
@@ -36,7 +36,7 @@
                     <option id='color' value='{{filter.color}}' ng-repeat="filter in filters">{{filter.color}}</option>
                 </optgroup>
             </select><br><br>
-            <input class='button' name='Submit' type='button' id='filter' value='Filtrar' ng-click="filter_cars(filter_value, filter_name)"/>
+            <input class='button' name='Submit' type='button' id='filter' value='Filtrar' ng-click="filter_cars(filter, key)"/>
             <button id='remove-filters'>
                 <img class='remove-filter' src="frontend/views/images/filter-remove.png">
             </button>
@@ -54,12 +54,16 @@
 </div>
 <div id="only_coche" class="only_car" ng-repeat="onecar in onecars_data | limitTo : 1" ng-show="show_only_car"> 
     <div class="caret2">
-        <p class='p_detail'>{{onecar.price}} {{onecar.brand_name}} {{onecar.model_name}}
+        <p class='p_detail'>{{onecar.price}}€ {{onecar.brand_name}} {{onecar.model_name}}
             {{onecar.doors}}p<br> {{onecar.category_name}}</p>
     </div>
-    <div class='div_only_car' ng-repeat="onecar in onecars">
-        <img class='img_only_car' src="frontend/views/images/cars/{{onecar.img}}" style = 'width: 110%; height: 150px;'></img>
-    </div>
+        <div class="swiper-wrapper">
+            <div class='div_only_car' ng-repeat="onecar in onecars">
+                <img class='img_only_car' src="frontend/views/images/cars/{{onecar.img}}" style = 'width: 110%; height: 150px;'></img>
+            </div>
+        </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
     <div class='button1'></div> 
     </div>
     <div id="map"></div>

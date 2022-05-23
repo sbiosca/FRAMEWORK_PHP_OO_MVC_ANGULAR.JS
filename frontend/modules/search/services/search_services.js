@@ -1,4 +1,4 @@
-function load_type() {
+/*function load_type() {
     ajaxPromise(friendlyURL('?modules=search&op=load_type'), 'POST', 'json')
        .then(function(data) {
             for (row in data) {
@@ -134,4 +134,30 @@ $(document).ready(function() {
     load_search();
     icon_search();
     
-});
+});*/
+
+app.factory('services_search', ['services', '$rootScope', function(services, $rootScope) {
+    let service = {load_type: load_type, load_model: load_model/*, load_search: load_search, autocomplete: autocomplete, icon_search: icon_search*/};
+    return service;
+
+    function load_type() {
+        services.post('search', 'load_type')
+       .then(function(response) {
+            $rootScope.type = response;
+            console.log($rootScope.type);         
+       }, function(error) {
+           console.log(error);
+       });
+    }
+
+    function load_model(type = undefined) {
+        services.post('search', 'load_model', {type: type})
+       .then(function(response) {
+            $rootScope.model = response;
+            console.log($rootScope.model);         
+       }, function(error) {
+           console.log(error);
+       });
+    }
+
+}]);
