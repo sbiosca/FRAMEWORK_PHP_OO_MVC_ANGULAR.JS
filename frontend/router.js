@@ -23,17 +23,29 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: "frontend/modules/shop/views/shop.html", 
         controller: "ctrl_shop",
         resolve: {
-            list_cars: function (services) {
-                return services.get('shop','list_cars');
+                list_cars: function (services) {
+                    return services.get('shop','list_cars');
+                },
+                filters: function (services) {
+                    return services.get('shop','filters');                
+                },
+                pagi: function (services) {
+                    return services.get('shop','count_pagination');
+                }
+            } 
+    }).when ("/details", {
+        templateUrl: "frontend/modules/shop/views/shop.html", 
+        controller: "ctrl_shop",
+        resolve: {
+            list_cars: function () {
             },
-            filters: function (services) {
-                return services.get('shop','filters');                
+            filters: function () {             
             },
-            pagi: function (services) {
-                return services.get('shop','count_pagination');
+            pagi: function () {
             }
-            }
+        } 
         }
+
     ).otherwise ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 
         controller: "ctrl_home",

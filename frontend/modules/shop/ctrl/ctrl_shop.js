@@ -605,11 +605,10 @@ $(document).ready (function (){
 
 app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filters, pagi, services_shop) {
 
-    $scope.list = list_cars;
-    $scope.filters = filters;
-    $scope.pagination = pagi;
-    $scope.show_only_car = false;
-    $scope.show_list_car = true;
+        $scope.list = list_cars;
+        $scope.filters = filters;
+        $scope.pagination = pagi;
+   
 
     $scope.filter_cars = function(value, key) {
         console.log(value);
@@ -667,11 +666,20 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     }
 
     $scope.details = function(id) {
-        services_shop.details(id);
-        $scope.show_only_car = true;
-        $scope.show_list_car = false;
+        location.href = '#/details';
+        $rootScope.id = id;
     }
     
-    
+    let path = $route.current.originalPath.split('/');
+    console.log(path[1]);
+
+    if (path[1] === "shop") {
+        $scope.show_only_car = false;
+        $scope.show_list_car = true;
+    }else if (path[1] === "details") {
+        services_shop.details($rootScope.id);
+        $scope.show_only_car = true;
+        $scope.show_list_car = false;
+    } 
 
 });
