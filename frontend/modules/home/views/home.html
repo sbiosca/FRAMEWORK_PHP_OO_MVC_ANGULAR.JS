@@ -1,8 +1,8 @@
 <br><br>
 <strong class="brand_title">BRANDS</strong>
-<div class="swiper">
-   <div class="swiper-wrapper">
-      <div class="swiper-slide" ng-repeat="carrousel in carrousels">
+<div class="swiper" id="swiper-home">
+   <div class="swiper-wrapper" id="swiper-wrapper-home">
+      <div class="swiper-slide" id="swiper-slide-home" ng-repeat="carrousel in carrousels">
          <img class="img_brand" src="frontend/views/images/logos/{{carrousel.brand_img}}" style = "width: 50%;  height: 130px;">
          <h1 class="brand_name">{{carrousel.brand_name}}</h1>
       </div>

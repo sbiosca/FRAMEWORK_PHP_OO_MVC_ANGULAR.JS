@@ -605,51 +605,14 @@ $(document).ready (function (){
 
 app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filters, pagi, services_shop) {
 
-        $scope.list = list_cars;
-        $scope.filters = filters;
-        $scope.pagination = pagi;
+    $scope.list = list_cars;
+    $scope.filters = filters;
+    $scope.pagination = pagi;
+
    
-
-    $scope.filter_cars = function(value, key) {
-        console.log(value);
-        var filter_push = [];
-        var brand = [];
-        var model = [];
-        var color = [];
-
-        if(key == "brand"){
-            if(!brand.includes(value)){
-                brand.push(value);
-            }else{
-                i = brand.indexOf(value);
-                brand.splice( i, 1 );
-            }
-        }else if(key == "model"){
-            if(!model.includes(value)){
-                model.push(value);
-            }else{
-                i = model.indexOf(value);
-                model.splice( i, 1 );
-            }
-        }else if(key == "color"){
-            if(!color.includes(value)){
-                color.push(value);
-            }else{
-                i = color.indexOf(value);
-                color.splice( i, 1 );
-            }
-        }
-
-        if(brand.length != 0){
-            filter_push.push({key : 'brand', value : brand});
-            console.log("BRAND: " + filter_push);
-        }
-        if(model.length != 0){
-            filter_push.push({key : 'model', value : model});
-        }
-        if(color.length != 0){
-            filter_push.push({key : 'color', value : color});
-        }
+    $scope.filter_cars = function(value1, value2, value3) {
+        console.log(value1 + value2 + value3);
+        services_shop.filter_car(value1, value2, value3);
 
     }
     ///services_shop.list_cars();
@@ -666,20 +629,23 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     }
 
     $scope.details = function(id) {
-        location.href = '#/details';
-        $rootScope.id = id;
+        location.href = '#/details/:'+id;
+        //$rootScope.id = id;
     }
     
+    
     let path = $route.current.originalPath.split('/');
-    console.log(path[1]);
+    console.log(path);
 
     if (path[1] === "shop") {
         $scope.show_only_car = false;
         $scope.show_list_car = true;
     }else if (path[1] === "details") {
-        services_shop.details($rootScope.id);
+        let id = $route.current.params.id.split(':');
+        services_shop.details(id[1]);
         $scope.show_only_car = true;
         $scope.show_list_car = false;
     } 
+   
 
 });
