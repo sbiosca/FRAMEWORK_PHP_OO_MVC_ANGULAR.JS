@@ -17,10 +17,16 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         });
     }
 
-    function filter_car(value1 = undefined, value2 = undefined, value3 = undefined) {
+    function filter_car(value1 = null, value2 = null, value3 = null) {
+        console.log(value1);
         services.post('shop', 'load_filters', {value1: value1, value2: value2, value3: value3})
         .then(function(response) {
             console.log(response);
+            if (response == 0) {
+                console.log("NO COCHE");
+                //location.href = "#/shop/not";
+            }
+            $rootScope.cars = response;
         }, function(error) {
             console.log(error);
         });

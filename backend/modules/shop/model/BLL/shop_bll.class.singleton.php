@@ -36,7 +36,8 @@
 			return $this -> DAO -> load_count($this->db, $args);
 		}
 		public function get_load_filter_BLL($args) {
-			return $this -> DAO -> load_filters($this->db, $args);
+			
+			return $this -> DAO -> load_filters($this->db, $args[0], $args[1], $args[2]);
 		}
 		public function get_count_filter_BLL($args) {
 			return $this -> DAO -> count_filters($this->db, $args);

@@ -616,7 +616,7 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
 
     }
     ///services_shop.list_cars();
-
+    
     services_shop.list_cars($scope.pagination);
 
 
@@ -638,6 +638,13 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     console.log(path);
 
     if (path[1] === "shop") {
+        $rootScope.show_cars = true;
+        $rootScope.show_cars_not = false;
+        $scope.show_only_car = false;
+        $scope.show_list_car = true;
+    }else if ((path[1] === "shop") && (path[2] === "not")) {
+        $rootScope.show_cars = false;
+        $rootScope.show_cars_not = true;
         $scope.show_only_car = false;
         $scope.show_list_car = true;
     }else if (path[1] === "details") {

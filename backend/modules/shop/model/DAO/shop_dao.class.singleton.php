@@ -95,7 +95,22 @@ class shop_DAO {
         $stmt = $db->execute($sql);
     }
 
-    public function load_filters($db, $search) {
+    public function load_filters($db, $brand, $model, $color) {
+        if (($brand) && (!$model) && (!$color)) {
+            $search = "WHERE b.brand_name ='$brand' ";
+        }else if ((!$brand) && ($model) && (!$color)) {
+            $search = "WHERE m.model_name ='$model' ";
+        }else if ((!$brand) && (!$model) && ($color)) {
+            $search = "WHERE c.color ='$color' ";
+        }else if (($brand) && ($model) && (!$color)) {
+            $search = "WHERE b.brand_name ='$brand' AND m.model_name ='$model'";
+        }else if (($brand) && (!$model) && ($color)) {
+            $search = "WHERE b.brand_name ='$brand' AND c.color ='$color'";
+        }else if ((!$brand) && ($model) && ($color)) {
+            $search = "WHERE m.model_name ='$model' AND  c.color ='$color'";
+        }else if (($brand) && ($model) && ($color)) {
+            $search = "WHERE b.brand_name ='$brand' AND m.model_name ='$model' AND  c.color ='$color'";
+        }
         $sql = "SELECT m.model_name,  b.brand_name, c.exchange, c.color,  c.enrolment, t.type_name, c.km, c.date, ca.category_name, c.car_img, c.price, c.city, c.lat, c.lon
         FROM cars c
         INNER JOIN category ca
