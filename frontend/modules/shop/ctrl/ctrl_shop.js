@@ -610,10 +610,10 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     $scope.pagination = pagi;
 
    
-    $scope.filter_cars = function(value1, value2, value3) {
-        console.log(value1 + value2 + value3);
-        services_shop.filter_car(value1, value2, value3);
-
+    $scope.filter_cars = function(brand_name, model_name, color) {
+        var array = [{brand_name, model_name, color}];
+        console.log(array);
+        services_shop.filter_car(array);
     }
     ///services_shop.list_cars();
     
@@ -637,16 +637,22 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     let path = $route.current.originalPath.split('/');
     console.log(path);
 
-    if (path[1] === "shop") {
+    if ((path[1] === "shop") && (path[2] !== "not")) {
         $rootScope.show_cars = true;
         $rootScope.show_cars_not = false;
         $scope.show_only_car = false;
         $scope.show_list_car = true;
+        if (localStorage.getItem("filters")) {
+            console.log("FILTROS LOCALSTORAGE");
+            var filtros = JSON.parse(localStorage.filters);
+            services_shop.filter_car(filtros);
+        }
     }else if ((path[1] === "shop") && (path[2] === "not")) {
         $rootScope.show_cars = false;
         $rootScope.show_cars_not = true;
         $scope.show_only_car = false;
         $scope.show_list_car = true;
+        
     }else if (path[1] === "details") {
         let id = $route.current.params.id.split(':');
         services_shop.details(id[1]);

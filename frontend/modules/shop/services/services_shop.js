@@ -17,15 +17,16 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         });
     }
 
-    function filter_car(value1 = null, value2 = null, value3 = null) {
-        console.log(value1);
-        services.post('shop', 'load_filters', {value1: value1, value2: value2, value3: value3})
+    function filter_car(filtros) {
+        console.log(filtros);    
+        services.post('shop', 'load_filters', {array: filtros})
         .then(function(response) {
             console.log(response);
             if (response == 0) {
                 console.log("NO COCHE");
-                //location.href = "#/shop/not";
+                location.href = "#/shop/not";
             }
+            localStorage.setItem("filters", JSON.stringify(response));
             $rootScope.cars = response;
         }, function(error) {
             console.log(error);
@@ -47,7 +48,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
        .then(function(response) {
             $rootScope.onecars_data = response;
             $rootScope.onecars = response;
-            console.log(response);
+            console.log(response[0]);
             setTimeout(() => {  
                 new Swiper('.swiper', {
                     loop: true,
@@ -56,8 +57,12 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
                       nextEl: '.swiper-button-next',
                       prevEl: '.swiper-button-prev',
                     },
+                    autoplay: {
+                        delay: 5000,
+                      },
                   })
                 },0)
+            
             mapbox(response);   
             more_cars(response);      
        }, function(error) {
@@ -67,6 +72,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
    
 
    function mapbox(data) {
+       setTimeout(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiYmlvc2tpbjk0IiwiYSI6ImNrenloOW5xNDAwZDkzY3BiaXN6eTR3YTAifQ.Pe82p8bfNkNZ_mgJCbnwQw';
         const map = new mapboxgl.Map({
             container: 'map', 
@@ -76,6 +82,8 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         });
         map.addControl(new mapboxgl.FullscreenControl());
         details_map(map,data);
+       }, 0);
+        
    }
 
    function details_map(map, data) {

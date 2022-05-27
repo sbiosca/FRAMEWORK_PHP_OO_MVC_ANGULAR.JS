@@ -209,6 +209,9 @@ app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, ty
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+        autoplay: {
+          delay: 2000,
+        },
       })
     },0)
   

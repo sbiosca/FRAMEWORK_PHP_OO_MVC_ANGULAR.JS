@@ -24,19 +24,19 @@
 <div id="form" class="form">
         <form autocomplete="on" method="post" name="filter" id="filter"></form>
         <div class='div_form'>
-            <select class='brandss' id='selc' ng-model="select_brand" ng-change="check_brand">
+            <select class='brandss' id='selc' ng-model="select_brand" ng-change="filter_cars(select_brand)">
                 <optgroup id='bran' class='select1' label='ALL BRANDS'>
                     <option value="" >SELECT THE BRAND</option>
-                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="(key, filter) in filters">{{filter.brand_name}}</option>
+                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="(key, filter) in filters" >{{filter.brand_name}}</option>
                 </optgroup>
             </select><br><br>
-            <select class='modelss' id='selc' ng-model="select_model" ng-change="check_model">
+            <select class='modelss' id='selc' ng-model="select_model" ng-change="filter_cars(select_model)">
                 <optgroup class='select2' label='ALL MODELS'>
                     <option value="" >SELECT THE MODEL</option>
                     <option id='model' value='{{filter.model_name}}' ng-repeat="filter in filters">{{filter.model_name}}</option>
                 </optgroup>
             </select><br><br>
-            <select class='colorss' id='selc' ng-model="select_color" ng-change="check_color">
+            <select class='colorss' id='selc' ng-model="select_color" ng-change="filter_cars(select_color)">
                 <optgroup class='select3' label='ALL COLORS'>
                     <option value="" >SELECT THE COLOR</option>
                     <option id='color' value='{{filter.color}}' ng-repeat="filter in filters">{{filter.color}}</option>

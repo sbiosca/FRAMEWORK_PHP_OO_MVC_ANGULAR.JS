@@ -125,6 +125,7 @@ class shop_DAO {
         $stmt = $db->execute($sql);
         return $db->list($stmt);
     }
+   
 
     public function count_filters($db, $search) {
         $sql = " SELECT COUNT(*) AS cars 
