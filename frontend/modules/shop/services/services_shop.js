@@ -1,7 +1,8 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
 
-    let service = {list_cars: list_cars, filter_car: filter_car, load_pagination1: load_pagination1, load_pagination2: load_pagination2, details: details, mapbox: mapbox
-                    ,details_map: details_map, more_cars: more_cars};
+    let service = {list_cars: list_cars, filter_car: filter_car, print_filter_car: print_filter_car, 
+                    load_pagination1: load_pagination1, load_pagination2: load_pagination2, details: details, 
+                    mapbox: mapbox ,details_map: details_map, more_cars: more_cars, remove_filters: remove_filters};
     return service;
 
     function list_cars(pagi, items = 0) {
@@ -17,20 +18,29 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         });
     }
 
-    function filter_car(filtros) {
-        console.log(filtros);    
-        services.post('shop', 'load_filters', {array: filtros})
+    function filter_car(brand_name = null, model_name = null, color = null) {
+        console.log(brand_name);    
+        services.post('shop', 'load_filters', {brand_name: brand_name, model_name: model_name, color: color})
         .then(function(response) {
             console.log(response);
             if (response == 0) {
                 console.log("NO COCHE");
                 location.href = "#/shop/not";
             }
-            localStorage.setItem("filters", JSON.stringify(response));
             $rootScope.cars = response;
+            localStorage.setItem("filters", JSON.stringify(response));
+            mapbox(response);
         }, function(error) {
             console.log(error);
         });
+    }
+
+    function print_filter_car(filtros) {
+        $rootScope.cars = filtros;
+        for (row in $rootScope.cars) {
+            console.log($rootScope.cars);
+        }
+        mapbox(filtros);
     }
 
     function load_pagination1(total) {
@@ -72,6 +82,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
    
 
    function mapbox(data) {
+       console.log(data);
        setTimeout(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiYmlvc2tpbjk0IiwiYSI6ImNrenloOW5xNDAwZDkzY3BiaXN6eTR3YTAifQ.Pe82p8bfNkNZ_mgJCbnwQw';
         const map = new mapboxgl.Map({
@@ -88,6 +99,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
 
    function details_map(map, data) {
        $rootScope.maps = data;
+       console.log($rootScope.maps);
        for (row in $rootScope.maps) {
             $rootScope.lat = $rootScope.maps[row].lat;
             $rootScope.lon = $rootScope.maps[row].lon;
@@ -120,7 +132,10 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         });
    }
 
-
+   function remove_filters() {
+       localStorage.removeItem("filters");
+       window.location.reload();
+   }
    
 
 

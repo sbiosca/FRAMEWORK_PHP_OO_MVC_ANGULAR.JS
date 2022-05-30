@@ -26,18 +26,21 @@
                       </ul>
                       <div class="search-div">
                          <form class="search-form">
-                            <select class="types" id="type">
-                               <option value="0">TYPE</option>
+                            <select class="types" id="type" ng-model="type_selected" ng-change="load_model(type_selected)">
+                               <option value="">TYPE</option>
+                               <option value="{{types.type_name}}" ng-repeat="types in type" ">{{types.type_name}}</option>
                             </select>
-                            <select id="model">
-                              <option value="0">MODEL</option>
+                            <select id="model" ng-model="model_selected">
+                              <option value="">MODEL</option>
+                              <option value="{{models.model_name}}" ng-repeat="models in model" ">{{models.model_name}}</option>
                            </select>
-                           <input type="text" id="city" autocomplete="off"/>
-                           <div id="search_city"></div>
+                           <input type="text" id="city" autocomplete="off" ng-model="autocom" ng-change="autocomplete(type_selected, model_selected, autocom)"/>
+                           <div id="search_city">
+                              <div class="searchElement" ng-repeat="autocom in complete" ng-click="autocomplete(type_selected, model_selected, autocom)">{{autocom.city}}</div>
+                           </div>
                          </form>
                       </div>
                       <div id="logear">
-                        
                      </div>
                    </div>
                 </nav>

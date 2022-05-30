@@ -85,6 +85,13 @@ app.run(function($rootScope, services, services_search){
     console.log("HOLLAAAA_ RUN");
 
     services_search.load_type();
-    //services_search.load_model();
+
+    $rootScope.load_model = function(type) {
+        services_search.load_model(type);
+    }
+
+    $rootScope.autocomplete = function(type = undefined, model = undefined, autocom){
+        services_search.autocomplete(type, model, autocom);
+    }
 
 });

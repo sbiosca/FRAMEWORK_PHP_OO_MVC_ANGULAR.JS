@@ -48,7 +48,22 @@ class search_DAO {
         return $db->list($stmt);
     }
     public function list_auto_type_model($db, $complete, $type, $model) {
-        $sql = "SELECT c.city
+        $sql = "SELECT  m.model_name,  b.brand_name, c.exchange, c.color,  c.enrolment, t.type_name, c.km, c.date, ca.category_name, c.car_img, c.price, c.city, c.lat, c.lon
+        FROM cars c
+        INNER JOIN category ca
+        ON c.cod_category = ca.cod_category
+        INNER JOIN type t
+        ON t.cod_type = c.cod_type
+        INNER JOIN model m
+        ON c.cod_model = m.cod_model
+        INNER JOIN brand b
+        ON b.cod_brand = m.cod_brand
+        WHERE t.type_name = '$type'
+        AND m.model_name = '$model'
+        AND c.city LIKE '$complete%' ";
+        $stmt = $db->execute($sql);
+        return $db->list($stmt);
+        /*$sql = "SELECT c.city
         FROM cars c
         INNER JOIN type t
         ON t.cod_type = c.cod_type
@@ -58,7 +73,7 @@ class search_DAO {
         AND m.model_name = '$model'
         AND c.city LIKE '$complete%' ";
         $stmt = $db->execute($sql);
-        return $db->list($stmt);
+        return $db->list($stmt);*/
     }
     public function list_auto_model($db, $model, $complete) {
         $sql = "SELECT c.city

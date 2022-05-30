@@ -609,31 +609,20 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     $scope.filters = filters;
     $scope.pagination = pagi;
 
+    console.log(filters);
    
     $scope.filter_cars = function(brand_name, model_name, color) {
-        var array = [{brand_name, model_name, color}];
-        console.log(array);
-        services_shop.filter_car(array);
+        services_shop.filter_car(brand_name, model_name, color);
     }
-    ///services_shop.list_cars();
-    
-    services_shop.list_cars($scope.pagination);
-
-
-    $scope.load_pagination1 = function() {
-        services_shop.load_pagination1($scope.pagination);
-    }
-    
-    $scope.load_pagination2 = function() {
-        services_shop.load_pagination2($scope.pagination);
-    }
-
     $scope.details = function(id) {
         location.href = '#/details/:'+id;
         //$rootScope.id = id;
     }
     
-    
+    $scope.remove_filters = function() {
+        services_shop.remove_filters();
+    }
+
     let path = $route.current.originalPath.split('/');
     console.log(path);
 
@@ -645,7 +634,16 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
         if (localStorage.getItem("filters")) {
             console.log("FILTROS LOCALSTORAGE");
             var filtros = JSON.parse(localStorage.filters);
-            services_shop.filter_car(filtros);
+            services_shop.print_filter_car(filtros);
+            $scope.filters = filtros;
+        }else {
+            services_shop.list_cars($scope.pagination);  
+            $scope.load_pagination1 = function() {
+                services_shop.load_pagination1($scope.pagination);
+            }
+            $scope.load_pagination2 = function() {
+                services_shop.load_pagination2($scope.pagination);
+            }
         }
     }else if ((path[1] === "shop") && (path[2] === "not")) {
         $rootScope.show_cars = false;

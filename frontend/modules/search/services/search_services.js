@@ -1,41 +1,4 @@
-/*function load_type() {
-    ajaxPromise(friendlyURL('?modules=search&op=load_type'), 'POST', 'json')
-       .then(function(data) {
-            for (row in data) {
-                $('#type').append('<option value = "' + data[row].type_name + '">' + data[row].type_name + '</option>');
-            }
-        }).catch(function(error) {
-            console.log(error);
-        });
-}
-
-function load_model(data = undefined) {
-    console.log(data);
-    ajaxPromise(friendlyURL('?modules=search&op=load_model'), 'POST', 'JSON', data)
-       .then(function(data) {
-            $('#model').empty();
-            $('#model').append('<option value="0">MODEL</option>');
-            for (row in data) {
-                $('#model').append('<option value = "' + data[row].model_name + '">' + data[row].model_name + '</option>');
-            }
-        }).catch(function(error) {
-            console.log(error);
-        });
-}
-
-function load_search(){
-    load_type();
-    load_model();
-    $('#type').on('change', function(){
-        let name = {type: $(this).val()};
-        if (name === 0) {
-            load_model();
-        }else {
-            load_model(name);
-        }
-    });
-}
-
+/*
 function autocomplete() {
     $(document).on('keyup', '#city', function() {
         let infor =  {complete: $(this).val()};
@@ -137,18 +100,20 @@ $(document).ready(function() {
 });*/
 
 app.factory('services_search', ['services', '$rootScope', function(services, $rootScope) {
-    let service = {load_type: load_type, load_model: load_model/*, load_search: load_search, autocomplete: autocomplete, icon_search: icon_search*/};
+    let service = {load_type: load_type, load_model: load_model, autocomplete: autocomplete};
     return service;
 
+    
     function load_type() {
         services.post('search', 'load_type')
        .then(function(response) {
             $rootScope.type = response;
-            console.log($rootScope.type);         
+            console.log($rootScope.type);      
        }, function(error) {
            console.log(error);
        });
     }
+    
 
     function load_model(type = undefined) {
         services.post('search', 'load_model', {type: type})
@@ -159,5 +124,23 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
            console.log(error);
        });
     }
+
+    function autocomplete(type = undefined, model = undefined, autocom) {
+        if(autocom != ""){
+            services.post('search', 'autocomplete', {type: type, model: model, complete: autocom})
+            .then(function(response) {
+                console.log(response);
+                $rootScope.complete = response;
+                $rootScope.cars = response;
+                localStorage.setItem("filters", JSON.stringify(response));
+                location.href = "#/shop";
+            }, function(error) {
+                console.log(error);
+            });       
+        }else{
+            $rootScope.complete = [];
+        }
+    }
+
 
 }]);

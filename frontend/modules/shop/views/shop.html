@@ -1,8 +1,8 @@
 <br><br>
 <div id="all">
 <div id="cars" class="all_cars" ng-show="show_list_car">
-    <div class="services__content">
-        <div class="cars_elements" ng-repeat="car in cars">
+    <div class="services__content" ng-repeat="car in cars">
+        <div class="cars_elements">
             <div class="caret" id="" ng-show="show_cars">
                 <p id="p_img"><img id="{{car.enrolment}}" class="img_car" src="frontend/views/images/cars/{{car.car_img}}" ng-click="details(car.enrolment)" style="max-width: 100%;"></img></p>
                 <div class="div-likes" id="">
@@ -21,22 +21,23 @@
             </div>
         </div>
     </div>
-<div id="form" class="form">
+    <div id="form" class="form">
         <form autocomplete="on" method="post" name="filter" id="filter"></form>
         <div class='div_form'>
-            <select class='brandss' id='selc' ng-model="select_brand" ng-change="filter_cars(select_brand)">
-                <optgroup id='bran' class='select1' label='ALL BRANDS'>
+            <!--<select class='brandss' id='selc' ng-model="select_brand" ng-change="filter_cars(select_brand)">-->
+            <select class='brandss' id='selc' ng-model="select_brand" ng-change="">
+                <optgroup id='bran' class='select1' label='ALL BRANDS' >
                     <option value="" >SELECT THE BRAND</option>
-                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="(key, filter) in filters" >{{filter.brand_name}}</option>
+                    <option id='brand' value='{{filter.brand_name}}' ng-repeat="filter in filters" >{{filter.brand_name}}</option>
                 </optgroup>
             </select><br><br>
-            <select class='modelss' id='selc' ng-model="select_model" ng-change="filter_cars(select_model)">
+            <select class='modelss' id='selc' ng-model="select_model" ng-change="">
                 <optgroup class='select2' label='ALL MODELS'>
                     <option value="" >SELECT THE MODEL</option>
                     <option id='model' value='{{filter.model_name}}' ng-repeat="filter in filters">{{filter.model_name}}</option>
                 </optgroup>
             </select><br><br>
-            <select class='colorss' id='selc' ng-model="select_color" ng-change="filter_cars(select_color)">
+            <select class='colorss' id='selc' ng-model="select_color" ng-change="">
                 <optgroup class='select3' label='ALL COLORS'>
                     <option value="" >SELECT THE COLOR</option>
                     <option id='color' value='{{filter.color}}' ng-repeat="filter in filters">{{filter.color}}</option>
@@ -44,7 +45,7 @@
             </select><br><br>
             <input class='button' name='Submit' type='button' id='filter' value='Filtrar' ng-click="filter_cars(select_brand, select_model, select_color)"/>
             <button id='remove-filters'>
-                <img class='remove-filter' src="frontend/views/images/filter-remove.png">
+                <img class='remove-filter' src="frontend/views/images/filter-remove.png" ng-click="remove_filters()">
             </button>
         </div>
     </div>
