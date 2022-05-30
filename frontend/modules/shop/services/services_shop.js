@@ -19,7 +19,9 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     }
 
     function filter_car(brand_name = null, model_name = null, color = null) {
-        console.log(brand_name);    
+        var array = [{brand_name, model_name, color}];
+        localStorage.setItem("filters_select", JSON.stringify(array));
+        console.log(array);    
         services.post('shop', 'load_filters', {brand_name: brand_name, model_name: model_name, color: color})
         .then(function(response) {
             console.log(response);

@@ -13,34 +13,31 @@
                 <p id="p_cambio">{{car.exchange}} | {{car.type_name}} | {{car.category_name}}</p><br><br>
                 <p id="p_date">{{car.date}} {{car.km}} KM <p id="p_city">{{car.city}}</p></p><br>
             </div>
-            <div class="caret" id="" ng-show="show_cars_not">
-                <p id="p_img"><img  class="img_car"  style="max-width: 100%;"></img></p>
-                <div class="div-likes" id="">
-                    <p id="" class="icon-like">&#x2665</p>
-                </div><br>
-            </div>
         </div>
     </div>
     <div id="form" class="form">
         <form autocomplete="on" method="post" name="filter" id="filter"></form>
         <div class='div_form'>
             <!--<select class='brandss' id='selc' ng-model="select_brand" ng-change="filter_cars(select_brand)">-->
-            <select class='brandss' id='selc' ng-model="select_brand" ng-change="">
+            <select class='brandss' id='selc' ng-model="select_brand" ng-change="filter_cars(select_brand, select_model, select_color)">
                 <optgroup id='bran' class='select1' label='ALL BRANDS' >
                     <option value="" >SELECT THE BRAND</option>
                     <option id='brand' value='{{filter.brand_name}}' ng-repeat="filter in filters" >{{filter.brand_name}}</option>
+                    <option id='brand' ng-if="select_brand == true" value='{{filter.brand_name}}' ng-repeat="filter in filters" selected >{{filter.brand_name}}</option>
                 </optgroup>
             </select><br><br>
-            <select class='modelss' id='selc' ng-model="select_model" ng-change="">
+            <select class='modelss' id='selc' ng-model="select_model" ng-change="filter_cars(select_brand, select_model, select_color)">
                 <optgroup class='select2' label='ALL MODELS'>
                     <option value="" >SELECT THE MODEL</option>
                     <option id='model' value='{{filter.model_name}}' ng-repeat="filter in filters">{{filter.model_name}}</option>
+                    <option id='model' ng-if="select_model == true" value='{{filter.model_name}}' ng-repeat="filter in filters" selected >{{filter.model_name}}</option>
                 </optgroup>
             </select><br><br>
-            <select class='colorss' id='selc' ng-model="select_color" ng-change="">
+            <select class='colorss' id='selc' ng-model="select_color" ng-change="filter_cars(select_brand, select_model, select_color)">
                 <optgroup class='select3' label='ALL COLORS'>
                     <option value="" >SELECT THE COLOR</option>
                     <option id='color' value='{{filter.color}}' ng-repeat="filter in filters">{{filter.color}}</option>
+                    <option id='color' ng-if="select_color == true" value='{{filter.color}}' ng-repeat="filter in filters" selected >{{filter.color}}</option>
                 </optgroup>
             </select><br><br>
             <input class='button' name='Submit' type='button' id='filter' value='Filtrar' ng-click="filter_cars(select_brand, select_model, select_color)"/>
@@ -52,11 +49,12 @@
     <div id="ctrl-map">
         <div id="map"></div>
     </div><br>
-    <div id="pagination">
+    <div id="pagination" ng-show="show_pagination">
         <button class="button-pagi1" ng-click="load_pagination1()"><p>1</p></button>
         <button class="button-pagi2" ng-click="load_pagination2()"><p>2</p></button>
         <button class="button-pagi3"><p>3</p></button>
     </div> 
+    
 </div>
 </div>
 
@@ -81,7 +79,8 @@
             <h2>MORE CARS YOU MIGHT BE INTERESTED IN</h2>
             <img class='img_cate' src='frontend/views/images/cars/{{more_cars.car_img}}' style = 'max-width: 100%;' ng-click="details(more_cars.enrolment)"></img>
         </div>
+        <div id="map"></div>
     </div>
-    <div id="map"></div>
+    
 </div>
 <br><br>

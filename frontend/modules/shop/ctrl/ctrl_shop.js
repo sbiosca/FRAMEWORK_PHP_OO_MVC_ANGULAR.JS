@@ -631,11 +631,22 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
         $rootScope.show_cars_not = false;
         $scope.show_only_car = false;
         $scope.show_list_car = true;
+        $scope.show_pagination = true;
         if (localStorage.getItem("filters")) {
             console.log("FILTROS LOCALSTORAGE");
             var filtros = JSON.parse(localStorage.filters);
             services_shop.print_filter_car(filtros);
             $scope.filters = filtros;
+            var hightlightfilters = JSON.parse(localStorage.filters_select);
+            if (hightlightfilters[0].brand_name) {
+                $scope.select_brand = true;
+            }
+            if (hightlightfilters[0].model_name) {
+                $scope.select_model = true;
+            }
+            if (hightlightfilters[0].color) {
+                $scope.select_color = true;
+            }
         }else {
             services_shop.list_cars($scope.pagination);  
             $scope.load_pagination1 = function() {
@@ -650,6 +661,7 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
         $rootScope.show_cars_not = true;
         $scope.show_only_car = false;
         $scope.show_list_car = true;
+        $scope.show_pagination = false;
         
     }else if (path[1] === "details") {
         let id = $route.current.params.id.split(':');

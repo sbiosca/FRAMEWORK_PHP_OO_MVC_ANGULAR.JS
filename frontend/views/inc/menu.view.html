@@ -36,7 +36,7 @@
                            </select>
                            <input type="text" id="city" autocomplete="off" ng-model="autocom" ng-change="autocomplete(type_selected, model_selected, autocom)"/>
                            <div id="search_city">
-                              <div class="searchElement" ng-repeat="autocom in complete" ng-click="autocomplete(type_selected, model_selected, autocom)">{{autocom.city}}</div>
+                              <div class="searchElement" ng-repeat="autocom in complete" >{{autocom.city}}</div>
                            </div>
                          </form>
                       </div>

@@ -501,6 +501,7 @@ body {
   }
 
   .services__content{
+    
     text-align: center;
   }
 
@@ -540,10 +541,11 @@ body {
 
   .form {
     width: 7cm;
-    height: 35cm;
-    position: relative;
+    height: 5cm;
+    position: absolute;
     left: 1cm;
     float: left;
+    top: 4cm;
   }
 
   #map { 
@@ -552,12 +554,13 @@ body {
     position: relative;
     right: 1cm;
     float: right;
-    top: -19.5cm;
+    top: auto;
    }
 
   #ctrl-map {
-     position: sticky;
-     top: 10px;
+     position: absolute;
+     top: 4cm;
+     right: 1cm;
   }
 
  
@@ -566,7 +569,7 @@ body {
      background-color: rgb(184, 204, 184);
      border: 2px groove rgb(226, 215, 180);
      position: relative;
-     top: -19.5cm;
+     top: auto;
    }
 
 
@@ -673,9 +676,11 @@ body {
   
    /*PAGINATION*/
    #pagination {
+    width: 6cm;
+    height: 6cm;
     position: relative;
     top: auto;
-    left: 13cm;
+    left: 18.5cm;
   }
   .button-pagi1:hover, .button-pagi2:hover ,.button-pagi3:hover {
     background-color: #9b9191;
