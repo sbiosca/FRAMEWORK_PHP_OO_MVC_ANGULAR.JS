@@ -20,7 +20,7 @@ class ctrl_shop {
         common::load_models('shop_model', 'get_count', $_POST['id']);
     }
     function load_filters() {
-        echo json_encode(common::load_models('shop_model', 'get_load_filter', [$_POST['brand_name'], $_POST['model_name'], $_POST['color']]));
+        echo json_encode(common::load_models('shop_model', 'get_load_filter', [$_POST['brand_name'], $_POST['model_name'], $_POST['color'], $_POST['categ'], $_POST['type']]));
     }
     function count_filters() {
         echo json_encode(common::load_models('shop_model', 'get_count_filter', $_POST['search']));

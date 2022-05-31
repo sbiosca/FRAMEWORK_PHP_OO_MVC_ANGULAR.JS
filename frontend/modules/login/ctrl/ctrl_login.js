@@ -1,4 +1,4 @@
-function login() {
+/*function login() {
     if (validator_login() != 0) {
         var data = $('#login__form').serialize();
         console.log(data);
@@ -298,4 +298,11 @@ $(document).ready(function(){
     buttonclick();
     keylogin();
     load_content();
+});*/
+
+app.controller('ctrl_login', function($scope, $route, $rootScope, services, services_login, services_social_login, toastr) {
+    $scope.regex_username = /^[A-Za-z0-9._-]{5,15}$/;
+    $scope.regex_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+    $scope.regex_password = /^[A-Za-z0-9._-]{5,20}$/;
+
 });

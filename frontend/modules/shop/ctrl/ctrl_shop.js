@@ -626,7 +626,7 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     let path = $route.current.originalPath.split('/');
     console.log(path);
 
-    if ((path[1] === "shop") && (path[2] !== "not")) {
+    if (path[1] === "shop")  {
         $rootScope.show_cars = true;
         $rootScope.show_cars_not = false;
         $scope.show_only_car = false;
@@ -636,7 +636,9 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
             console.log("FILTROS LOCALSTORAGE");
             var filtros = JSON.parse(localStorage.filters);
             services_shop.print_filter_car(filtros);
+            console.log(filtros);
             $scope.filters = filtros;
+            if (localStorage.getItem("filters_select")){
             var hightlightfilters = JSON.parse(localStorage.filters_select);
             if (hightlightfilters[0].brand_name) {
                 $scope.select_brand = true;
@@ -646,7 +648,8 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
             }
             if (hightlightfilters[0].color) {
                 $scope.select_color = true;
-            }
+            }}
+            
         }else {
             services_shop.list_cars($scope.pagination);  
             $scope.load_pagination1 = function() {
@@ -656,13 +659,6 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
                 services_shop.load_pagination2($scope.pagination);
             }
         }
-    }else if ((path[1] === "shop") && (path[2] === "not")) {
-        $rootScope.show_cars = false;
-        $rootScope.show_cars_not = true;
-        $scope.show_only_car = false;
-        $scope.show_list_car = true;
-        $scope.show_pagination = false;
-        
     }else if (path[1] === "details") {
         let id = $route.current.params.id.split(':');
         services_shop.details(id[1]);

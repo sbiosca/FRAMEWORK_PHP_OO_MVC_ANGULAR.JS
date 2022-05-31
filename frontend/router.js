@@ -61,9 +61,11 @@ app.config(['$routeProvider', function ($routeProvider) {
                     return services.get('shop','count_pagination');
                 }
             } 
-        }
-
-    ).otherwise ("/home", {
+    }).when ("/login", {
+        templateUrl: "frontend/modules/login/views/login.html", 
+        controller: "ctrl_login",
+    
+    }).otherwise ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 
         controller: "ctrl_home",
         resolve: {

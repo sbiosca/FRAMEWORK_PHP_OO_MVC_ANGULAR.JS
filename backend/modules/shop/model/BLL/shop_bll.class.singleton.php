@@ -36,8 +36,8 @@
 			return $this -> DAO -> load_count($this->db, $args);
 		}
 		public function get_load_filter_BLL($args) {
-			$cars = array($args[0], $args[1], $args[2]);
-			return $this -> DAO -> load_filters($this->db, $cars[0], $cars[1], $cars[2]);
+			$cars = array($args[0], $args[1], $args[2], $args[3], $args[4]);
+			return $this -> DAO -> load_filters($this->db, $cars[0], $cars[1], $cars[2], $cars[3], $cars[4]);
 		}
 		public function get_count_filter_BLL($args) {
 			return $this -> DAO -> count_filters($this->db, $args);

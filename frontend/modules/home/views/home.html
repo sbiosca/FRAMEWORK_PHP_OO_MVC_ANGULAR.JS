@@ -3,7 +3,7 @@
 <div class="swiper" id="swiper-home">
    <div class="swiper-wrapper" id="swiper-wrapper-home">
       <div class="swiper-slide" id="swiper-slide-home" ng-repeat="carrousel in carrousels">
-         <img class="img_brand" src="frontend/views/images/logos/{{carrousel.brand_img}}" style = "width: 50%;  height: 130px;">
+         <img class="img_brand" src="frontend/views/images/logos/{{carrousel.brand_img}}" style = "width: 50%;  height: 130px;" ng-click="go_shop(carrousel.brand_name)">
          <h1 class="brand_name">{{carrousel.brand_name}}</h1>
       </div>
    </div>
@@ -11,15 +11,11 @@
    <div class="swiper-button-next"></div>
 </div>
 <br><br>
-<!--<div class="buttonmore">
-<button class="loadmore" id="loadmore">Load_MORE</button>
-</div>-->
-
 <br>
 <div id = "homePage" class = "container_categ">
    <strong>CATEGORY</strong>
    <div class="services__content" ng-repeat="categ in categs">
-      <img class="img_cate" id='' src="frontend/views/images/{{categ.category_img}}">
+      <img class="img_cate" id='' src="frontend/views/images/{{categ.category_img}}" ng-click="go_shop(null, categ.category_name)">
    </div>
 </div>
 <div id = "homePage" class = "container_categ2"></div>
@@ -28,7 +24,7 @@
    <strong>TYPE</strong>
    <br><br><br><br><br><br><br><br>
    <div class="services__content" ng-repeat="type in types">
-      <img class="img_type" id='' src="frontend/views/images/{{type.type_img}}" style = "max-width: 100%; height: 200px;">
+      <img class="img_type" id='' src="frontend/views/images/{{type.type_img}}" style = "max-width: 100%; height: 200px;" ng-click="go_shop(null, null, type.type_name)">
    </div>
 </div>
 

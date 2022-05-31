@@ -187,16 +187,16 @@ $(document).ready (function (){
 });
 */
 
-app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, type/*, loadall, news*/) {
-  /*let items = 12;
-  let loaded = load;
-  */
-
+app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, type/*, loadall, news*/,services_shop) {
   
   $scope.carrousels = carrousel_brand;
   $scope.categs = categ;
   $scope.types = type;
 
+  $scope.go_shop = function(brand, categ, type) {
+    location.href = '#/shop';
+    services_shop.filter_car(brand, null, null, categ, type);
+  }
   
   //news()
   console.log($scope.categs);
