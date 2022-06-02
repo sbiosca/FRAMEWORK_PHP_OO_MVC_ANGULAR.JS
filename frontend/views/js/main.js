@@ -1,4 +1,4 @@
-function ajaxPromise(sUrl, sType, sTData, sData) {
+/*function ajaxPromise(sUrl, sType, sTData, sData) {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: sUrl,
@@ -34,7 +34,7 @@ function friendlyURL(url) {
 function friendlyURLImages(url) {
     return "http://localhost/FRAMEWORK_PHP_OO_MVC_ANGULAR.JS/" + url;
 }
-
+*/
 
 function menu() {
     $("<div></div>").attr({"class" : "logo"}).html(

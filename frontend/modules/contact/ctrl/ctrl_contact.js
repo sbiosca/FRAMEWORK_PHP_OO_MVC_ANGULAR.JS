@@ -8,6 +8,7 @@ app.controller('ctrl_contact', function($scope, services, toastr) {
         let email = {'name': $scope.sendEmail_form.full_name, 'email': $scope.user_email, 'matter': $scope.email_matter, 'message': $scope.sendEmail_form.email_message};
         services.post('contact', 'send_contact', email)
         .then(function(response) {
+            console.log(response);
             if (response == '"done"') {
                 toastr.success('The email has been sended, you will receive an answer as soon as posible.' ,'Email sended');
                 $scope.full_name = null;

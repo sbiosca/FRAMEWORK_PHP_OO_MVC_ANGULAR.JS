@@ -1,4 +1,4 @@
-function avatar() {
+/*function avatar() {
     ajaxPromise('https://randomuser.me/api/', 'GET', 'json')
        .then(function(data) {
             var user = data.results[0].picture.large;
@@ -98,4 +98,4 @@ function validator_register() {
 
 $(document).ready(function(){
     avatar();
-});
+});*/

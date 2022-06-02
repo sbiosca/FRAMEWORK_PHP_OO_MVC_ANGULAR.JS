@@ -54,3 +54,13 @@ span {
   font-size: 15px;
 }
 
+.form__input, .containerlogin, .button_container, .social_login{
+  width: 8cm;
+  position: relative;
+  left: 16.8cm;
+  top: -2cm;
+}
+
+.welcomelogin {
+  font-size: large;
+} 

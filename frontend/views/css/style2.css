@@ -609,8 +609,9 @@ body {
 
    /*LOGIN*/
    #logear {
-    position: relative;
-    left: 5cm;
+    position: absolute;
+    top: 0.3cm;
+    right: -1cm;
    }
 
    /*.img-avatar {

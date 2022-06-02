@@ -65,6 +65,14 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: "frontend/modules/login/views/login.html", 
         controller: "ctrl_login",
     
+    }).when ("/register", {
+        templateUrl: "frontend/modules/login/views/register.html", 
+        controller: "ctrl_login",
+    
+    }).when ("/verify/:token", {
+        templateUrl: "frontend/modules/login/views/login.html", 
+        controller: "ctrl_login",
+    
     }).otherwise ("/home", {
         templateUrl: "frontend/modules/home/views/home.html", 
         controller: "ctrl_home",
@@ -83,8 +91,19 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-app.run(function($rootScope, services, services_search){ 
+app.run(function($rootScope, services, services_search, services_login){ 
     console.log("HOLLAAAA_ RUN");
+    if(localStorage.token){
+        $rootScope.button_logout = true;
+        $rootScope.button_login = false;
+        var toke = localStorage.token.replace(/['\"]+/g, '');
+        var toke = toke.substring(1, toke.length - 1);
+        console.log(toke);
+        services_login.user_data(toke);
+    }else{
+        $rootScope.button_login = true;
+        $rootScope.button_logout = false;
+    }
 
     services_search.load_type();
 

@@ -11,7 +11,7 @@
                     $email['inputEmail'] = 'bioscar.soporte@gmail.com';
                     $email['inputMatter'] = 'Email verification';
                     $email['inputMessage'] = 'VERIFICATION';
-                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/FRAMEWORK_PHP_OO_MVC/login/list_login/verify/$email[token]'>Click here for verify your email.</a>";
+                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/FRAMEWORK_PHP_OO_MVC_ANGULAR.JS/#/verify/$email[token]'>Click here for verify your email.</a>";
                     break;
                 case 'recover';
                     $email['fromEmail'] = 'bioscar.soporte@gmail.com';

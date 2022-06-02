@@ -300,9 +300,35 @@ $(document).ready(function(){
     load_content();
 });*/
 
-app.controller('ctrl_login', function($scope, $route, $rootScope, services, services_login, services_social_login, toastr) {
+app.controller('ctrl_login', function($scope, services_login,  $route/*, $rootScope, services, services_social_login, toastr*/) {
     $scope.regex_username = /^[A-Za-z0-9._-]{5,15}$/;
     $scope.regex_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     $scope.regex_password = /^[A-Za-z0-9._-]{5,20}$/;
 
+    $scope.login = function() {
+        services_login.login($scope.username, $scope.password);
+        console.log($scope.username);
+        console.log($scope.password);
+    }
+
+    $scope.register = function() {
+        services_login.avatar($scope.username, $scope.email, $scope.password, $scope.password1);
+        console.log($scope.username);
+        console.log($scope.email);
+        console.log($scope.password);
+        console.log($scope.password1);
+    }
+
+
+    let path = $route.current.originalPath.split('/');
+    if(path[1] === 'login'){
+        console.log("PATH-LOGIN");
+    }else if(path[1] === 'logout'){
+        
+    }else if(path[1] === 'register'){
+       console.log("PATH-REGISTER");
+    }else if (path[1] === 'verify') {
+        console.log($route.current.params.token);
+        services_login.verify($route.current.params.token);
+    }
 });

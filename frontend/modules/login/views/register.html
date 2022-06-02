@@ -3,35 +3,35 @@
     <div class="form">
       <h2>Welcome</h2>
       <div class="form__input">
-      <input type="text" placeholder="Enter Username" id="username" name="username" required>
+      <input type="text" placeholder="Enter Username" id="username" name="username" ng-model="username" ng-pattern="regex_username" required>
       <br>
       <font color="red">
         <span id="error_username" class="error"></span>
       </font>
       </div>
       <div class="form__input">
-      <input type="text" placeholder="Enter Email" id="email" name="email" required>
+      <input type="text" placeholder="Enter Email" id="email" name="email" ng-model="email" ng-pattern="regex_email" required>
       <br>
       <font color="red">
         <span id="error_email" class="error"></span>
       </font>
       </div>
       <div class="form__input">
-      <input type="password" placeholder="Enter Password" id="password" name="password" required>
+      <input type="password" placeholder="Enter Password" id="password" name="password" ng-model="password" required ng-pattern="regex_password">
       <br>
       <font color="red">
         <span id="error_password" class="error"></span>
       </font>
       </div>
       <div class="form__input">
-        <input type="password" placeholder="Repeat Password" id="password1" name="password1" required>
+        <input type="password" placeholder="Repeat Password" id="password1" name="password1" ng-model="password1" required ng-pattern="regex_password">
         <br>
         <font color="red">
           <span id="error_password1" class="error"></span>
         </font>
         </div>
       <div class="button_container">
-        <input class="button-login" id="register" type="button" value = "Enter"/>
+        <input class="button-login" id="register" type="button" value = "Enter" ng-click="register()"/>
       </div>
       
     </div>
