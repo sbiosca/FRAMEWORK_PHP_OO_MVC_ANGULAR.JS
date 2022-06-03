@@ -6,7 +6,7 @@
 
 ### Información
 ***
-Mi proyecto es una aplicación web de un concesionario de coches llamado BIOSCA. Mi proyecto se ha realizado para el ciclo superior de Desarrollo de Aplicaciones WEB. El proyecto contiene el archivo .gitignore, donde selecciona todos los archivos .ini donde se encuentran todas las credenciales del programa. El codigo de proyecto esta definido en dos carpetas(backend y frontend), donde estan definidas las parte de servidor y cliente.
+Mi proyecto es una aplicación web de un concesionario de coches llamado BIOSCAR. Mi proyecto se ha realizado para el ciclo superior de Desarrollo de Aplicaciones WEB. El proyecto contiene el archivo .gitignore, donde selecciona todos los archivos .ini donde se encuentran todas las credenciales del programa. El codigo de proyecto esta definido en dos carpetas(backend y frontend), donde estan definidas las parte de servidor y cliente.
 
 ## Tecnologías
 ***
