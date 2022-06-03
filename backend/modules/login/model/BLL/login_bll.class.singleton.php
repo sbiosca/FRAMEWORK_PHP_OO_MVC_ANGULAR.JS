@@ -20,6 +20,9 @@
 		public function get_login_BLL($args) {
 			// $args[0] -- username $args[1] -- password
 			$user = $this -> DAO -> select_user($this->db, $args[0]);
+			if (!$user) {
+				return "error";
+			}
 			if (password_verify($args[1],$user[0]['password'])) {
 				$jwt = jwt_process::encode($user[0]['username']);
 				$this -> DAO -> update_token($this->db, $jwt, $user[0]['email']);
@@ -27,6 +30,7 @@
 			}else {
 				return "error";
 			}
+			
 
 		}
 		public function get_social_login_BLL($args) {

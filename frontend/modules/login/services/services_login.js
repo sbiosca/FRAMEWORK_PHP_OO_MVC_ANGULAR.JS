@@ -7,7 +7,6 @@ app.factory('services_login', ['services',  '$rootScope', 'toastr', function(ser
         services.get_api('https://randomuser.me/api/')
         .then(function(response) {
              var avatar = response.results[0].picture.large;
-             //var avatar = "https://randomuser.me/api/portraits/women/61.jpg";
              console.log(avatar);
              register(user, email, passwd, passwd1, avatar)
          }, function(error){
@@ -26,6 +25,7 @@ app.factory('services_login', ['services',  '$rootScope', 'toastr', function(ser
                 window.location.reload();
             }else {
                 $rootScope.error_password_red = true;
+                
             }
         }, function(error) {
             console.log(error);
@@ -37,6 +37,21 @@ app.factory('services_login', ['services',  '$rootScope', 'toastr', function(ser
         services.post('login', 'register', {username: user, password: passwd, email: email, password1: passwd1, avatar: avatar})
         .then(function(response) {
             console.log(response);
+            if (response == "REGISTRADO") {
+                $rootScope.error_email_exists, $rootScope.error_usuario_exists = false;
+                console.log("DONE!");
+                toastr.success("REGISTRADO CORRECTAMENTE, VERIFICA QUE ERES TU EN EL CORREO");
+                //localStorage.setItem("token", data);
+            }
+            else {
+                if (response == '"error_mail"') {
+                    console.log("Failed!");
+                    $rootScope.error_email_exists = true;
+                }else if (response == '"error"') {
+                    $rootScope.error_usuario_exists = true;
+                }
+                
+            }
         }, function(error) {
             console.log(error);
         });
@@ -63,7 +78,7 @@ app.factory('services_login', ['services',  '$rootScope', 'toastr', function(ser
                     toastr.error("Su cuenta no esta activada, porfavor revise el correo para verificar tu cuenta.");
                  }, 3)
                 
-                window.location.reload();
+                //window.location.reload();
             }
         }, function(error) {
             console.log(error)

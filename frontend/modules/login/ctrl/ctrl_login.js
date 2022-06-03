@@ -307,16 +307,11 @@ app.controller('ctrl_login', function($scope, services_login,  $route/*, $rootSc
 
     $scope.login = function() {
         services_login.login($scope.username, $scope.password);
-        console.log($scope.username);
-        console.log($scope.password);
+        //console.log($scope.username);
     }
 
     $scope.register = function() {
         services_login.avatar($scope.username, $scope.email, $scope.password, $scope.password1);
-        console.log($scope.username);
-        console.log($scope.email);
-        console.log($scope.password);
-        console.log($scope.password1);
     }
 
 

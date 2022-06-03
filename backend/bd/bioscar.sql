@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2022 a las 11:09:43
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 7.3.33
+-- Tiempo de generación: 03-06-2022 a las 16:30:44
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -83,12 +83,12 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`id`, `numrack`, `cod_model`, `enrolment`, `exchange`, `color`, `cod_type`, `km`, `doors`, `date`, `extras`, `cod_category`, `car_img`, `lat`, `lon`, `city`, `price`, `count`) VALUES
-(1, '05525', 'FO', '2556HRM', 'AUTOMATIC', 'BLUE', 'EL', 120, 5, '2020-04-10', 'sensor', 'KM', 'ford_focus.jpg', 38.8214, -0.609692, 'Ontinyent', 25000, 53),
-(2, '03565602', 'EN', '2656JTR', 'AUTOMATIC', 'RED', 'HY', 27852, 3, '2022-02-01', 'sensor', '2M', 'ferrari_enzo.jpg', 39.4697, -0.376335, 'Valencia', 250000, 46),
-(3, '2566', 'FI', '2036HTW', 'MANUAL', 'WHITE', 'GAS', 6980, 3, '2020-04-17', 'camera', '2M', 'ford_fiesta.jpg', 38.8387, -0.518189, 'Albaida', 14000, 31),
-(4, '26562603sF', 'UR', '0239LNG', 'AUTOMATIC', 'YELLOW', 'GAS', 12000, 5, '2019-04-05', '4x4', 'GR', 'lamborghini_urus.jpg', 41.3829, 2.17743, 'Barcelona', 150000, 30),
-(5, '1023153212d', 'KA', '7692BSR', 'MANUAL', 'BLUE', 'GAS', 199586, 3, '2002-02-20', 'sin', '2M', 'ford_ka.jpg', 38.3436, -0.488171, 'Alacant', 2500, 34),
-(6, '1212sf054', 'MS', '2363LKN', 'AUTOMATIC', 'BLACK', 'EL', 200, 5, '2021-10-21', 'tesla', 'KM', 'tesla_model-s.jpg', 38.7913, 0.176699, 'Javea', 68000, 137);
+(1, '05525', 'FO', '2556HRM', 'AUTOMATIC', 'BLUE', 'EL', 120, 5, '2020-04-10', 'sensor', 'KM', 'ford_focus.jpg', 38.8214, -0.609692, 'Ontinyent', 25000, 150),
+(2, '03565602', 'EN', '2656JTR', 'AUTOMATIC', 'RED', 'HY', 27852, 3, '2022-02-01', 'sensor', '2M', 'ferrari_enzo.jpg', 39.4697, -0.376335, 'Valencia', 250000, 47),
+(3, '2566', 'FI', '2036HTW', 'MANUAL', 'WHITE', 'GAS', 6980, 3, '2020-04-17', 'camera', '2M', 'ford_fiesta.jpg', 38.8387, -0.518189, 'Albaida', 14000, 34),
+(4, '26562603sF', 'UR', '0239LNG', 'AUTOMATIC', 'YELLOW', 'GAS', 12000, 5, '2019-04-05', '4x4', 'GR', 'lamborghini_urus.jpg', 41.3829, 2.17743, 'Barcelona', 150000, 31),
+(5, '1023153212d', 'KA', '7692BSR', 'MANUAL', 'BLUE', 'GAS', 199586, 3, '2002-02-20', 'sin', '2M', 'ford_ka.jpg', 38.3436, -0.488171, 'Alacant', 2500, 36),
+(6, '1212sf054', 'MS', '2363LKN', 'AUTOMATIC', 'BLACK', 'EL', 200, 5, '2021-10-21', 'tesla', 'KM', 'tesla_model-s.jpg', 38.7913, 0.176699, 'Javea', 68000, 143);
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1202,9 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`username`, `enrolment`) VALUES
-('moisesguer', '2556HRM');
+('moisesguer', '2556HRM'),
+('', '2363LKN'),
+('', '2363LKN');
 
 -- --------------------------------------------------------
 
@@ -1272,14 +1274,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `username`, `password`, `email`, `type`, `avatar`, `token_email`, `activate`) VALUES
-('2d3b', '10604728', '$2y$12$wI7lIhFgu6HPU3qKa8MHcONY7qKIc6xA3oM.v0piElprcg87VvFeC', 'sbiosca94ee@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/58.jpg', 'f3848e60213166d3324a', 'false'),
-('30eb', 'sergibiosca', '$2y$12$nhAE7sQEGEiCIW7CRkcP1uDNJbdzbT3qM0iSm/7cFih0fePwjwQrq', 'serbidaw@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/43.jpg', '357ba028c3176b971689', 'false'),
-('AfMlJQ3fP7VXY3nroSJTD5LmdyZ2_google.com', 'carlaloossorianoo7@gmail.com', '', 'carlaloossorianoo7@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a/AATXAJyZmUX0r0f3IAgkx3yhsXXXeKVcoeNdA4OU5Vs=s96-c', '', 'true'),
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NDk4ODUsImV4cCI6MTY1MTg0OTg4NSwibmFtZSI6IjEwNjA0NzI4ODgifQ.tz3zLm189GpVp1lD1uumPBA2m_HoOIOfkA7BGy2rAR0', '1060472888', '$2y$12$TXkKgEPNskwbWcERHZaakeg4pgOqITT1lgq3E2Tg0SYJxhDe9Rt.S', 'serbidawaa@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/58.jpg', '13b79e23bbe9479dd692', 'true'),
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTAzMjgsImV4cCI6MTY1MTg1MDMyOCwibmFtZSI6InlvbW9nYW4yIn0.gu0gIaMomulAngWwVONdqUDzyCByD4-10Gr7Kc7VrpM', 'yomogan2', '$2y$12$3b.r.RI3AUjpqORtb3CU7OG9dp6waQjXxcl4FHx8KNggNZhSRXdxi', 'yomogan@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/61.jpg', '4d021e5eaa2b11291964', 'true'),
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTM5MjQsImV4cCI6MTY1MTg1MzkyNCwibmFtZSI6InBlcGl0bzEyMyJ9.CB43VOsLeV46pS_vzDzgu9W9l2Vfh5COUBo5eNOZGT4\r\n', 'pepito123', '$2y$12$ZfqEXoNagz9.7ejWMOI93eMpV7rYsWEQJWO3SshN3jbtrx./bGwAa', 'sbio4@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/12.jpg', '2b1db468ea0fe584ba47', 'true'),
-('sPA3YcG1v8P9NCNlC93e8cmegl43_google.com', 'sbiosca94@gmail.com', '', 'sbiosca94@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a-/AOh14GhNvBhrbee6SYJRmMohMFjOXN8q1wHNCgx22n4C8A=s96-c', '5f571fc40a7af4ea9e9f', 'true'),
-('sVrkPFI1uqPCHqIw5ekEBWruBlg1_google.com', 'sergibiosca22@gmail.com', '', 'sergibiosca22@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a/AATXAJyw5IOhiBC72MEOBrh3MekwYsJPQ9BMugm4kUW8=s96-c', '', 'true');
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTI5NjczOTAsImV4cCI6MTY1Mjk2NzM5MCwibmFtZSI6ImNhcmxhbG9vcyJ9.XkVX_7eaQDNyiM0G60Tbc4Sc1Lh48IiJjR4FB6p46sY', 'carlaloos', '$2y$12$4zng7r8EBZWHsm3vdn7Fv.sDp5/nhvV3tVqCHQ/vmO6GMe/VUdYxG', 'sergibiosca22@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/88.jpg', '5580481290c5c299256f', 'true'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTQxODMyNjAsImV4cCI6MTY1NDE4MzI2MCwibmFtZSI6InNlcmdpYmlvc2NhIn0.J3KHv2b_9mtmWBfZc2lL8ewR32sEoh1ZorZR-cBRk0Y', 'sergibiosca', '$2y$12$JWoRrHCalETdoCO7Wj2Yb.N3rQTD5s92OMDPBHZzR4r.JFQvoPSdG', 'serbidaw@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/5.jpg', '7e9d576ba005bcc641e0', 'true'),
+('JCkLVXRlFCcvAAAZSHkixLqcPYz2_google.com', 'bioscar.soporte@gmail.com', '', 'bioscar.soporte@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a/AATXAJz8C_v67Mt8yEy-YRAV2Zq1BLrze-7KYlwG1EeI=s96-c', '', 'true'),
+('sPA3YcG1v8P9NCNlC93e8cmegl43_google.com', 'sbiosca94@gmail.com', '', 'sbiosca94@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a-/AOh14GhNvBhrbee6SYJRmMohMFjOXN8q1wHNCgx22n4C8A=s96-c', '', 'true');
 
 --
 -- Índices para tablas volcadas
