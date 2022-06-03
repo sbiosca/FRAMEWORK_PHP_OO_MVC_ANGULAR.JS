@@ -44,5 +44,8 @@ El proyecto esta dividido en los siguientes 5 modulos:
 
 ## Funciones
 ***
->
->
+Diferentes funciones de cada módulo:
+1. Módulo Shop, services shop:
+    > Function; list_cars, filter_car, print_filter_car, load_pagination1, load_pagination2, details, mapbox ,details_map, more_cars, remove_filters
+2. Módulo Home, ctrl home:
+    > Function; carrousel_brand, category, type
