@@ -1,6 +1,6 @@
 <form id = "login__form" name="login_form"" method="post">
 <div class="login">
-  <div class="form">
+  <div class="form" ng-show="form_login">
     <h2 class="welcomelogin">Welcome</h2>
     <div class="form__input">
     <input type="text" placeholder="Enter Username" id="username" name="username" ng-model="username" required ng-pattern="regex_username" 
@@ -26,15 +26,62 @@
     </div>
     <div class="containerlogin">
       <a class="button" id="login" type="button" href="#/register">Create new account</a><br>
-      <a class="recover_passw" id="recover_passw" type="button">FORGOT THE PASSWORD?</a>
+      <a class="recover_passw" id="recover_passw" type="button" href="#/recover">FORGOT THE PASSWORD?</a>
     </div>
     <div class="button_container">
       <input class="button-login" id="login" type="button" value = "Enter" ng-click="login()" ng-disabled = "login_form.username.$invalid || login_form.password.$invalid" />
     </div>
     <div class="social_login">
       <a class="social" id="social">OR</a><br>
-      <input class="button-google" id="button-google" type="button" value = "google"/>
-      <input class="button-git" id="button-git" type="button" value = "git"/>
+      <input class="button-google" id="button-google" type="button" value = "google" ng-click="login_google('google')"/>
+      <input class="button-git" id="button-git" type="button" value = "git" ng-click="login_github('github')"/>
+    </div>
+  </div>
+  <!--RECOVER PASSWORD_ SEND EMAIL-->
+  <div class="form_content" ng-show="form_recover">
+    <h2>RECOVER PASSWORD</h2><br>
+    <div class="form_input">
+      <label for="email"><font color="black"><p>Email</p></font></label>
+      <input type="text" placeholder="Enter email" id="email_recover" ng-model="email_recover" name="email_recover" ng-pattern="regex_email" required
+      ng-minlength="5">
+      <font color="red">
+        <span id="error_email" class="error" ng-show="login_form.email_recover.$error.required && (login_form.email_recover.$dirty ||
+        login_form.email_recover.$touched)">Introduzca un email</span>
+        <span id="error_email" class="error" ng-show="login_form.email_recover.$error.minlength">Minimo 5 caracteres</span>
+      </font>
+    </div>
+    <div class="button_container">
+      <input class="button_email_recover" id="button_email_recover" type="button" value = "Enter" ng-click="recover_password(email_recover)"
+       ng-disabled = "login_form.email_recover.$invalid || login_form.email_recover.$invalid" />
+    </div>
+  </div>
+  <!--NEW PASSWORD-->
+  <div class="form_content" ng-show="form_new_email">
+    <h2>NEW PASSWORD</h2><br>
+    <div class="form_input">
+      <label for="password"><font color="black"><p>Password</p></font></label>
+      <input type="password" placeholder="Enter password" id="new_password" ng-model="new_password" name="new_password" ng-pattern="regex_password" required
+      ng-minlength="5">
+      <font color="red">
+        <span id="error_password" class="error" ng-show="login_form.new_password.$error.required && (login_form.new_password.$dirty ||
+        login_form.new_password.$touched)">Introduzca una contraseña</span>
+        <span id="error_password" class="error" ng-show="login_form.new_password.$error.minlength">Contraseña no segura</span>
+      </font>
+    </div>
+    <div class="form_input">
+      <label for="password1"><font color="black"><p>Repeat password</p></font></label>
+      <input type="password" placeholder="Repeat password" id="new_password1" ng-model="new_password1" name="new_password1" ng-pattern="regex_password" required
+      ng-minlength="5">
+      <font color="red">
+        <span id="error_password" class="error" ng-show="login_form.new_password1.$error.required && (login_form.new_password1.$dirty ||
+        login_form.new_password1.$touched)">Introduzca una contraseña</span>
+        <span id="error_password" class="error" ng-show="login_form.new_password1.$error.minlength">Contraseña no segura</span>
+        <span id="error_password" class="error" ng-show="error_newpassword_red">Las contraseñas no coinciden</span>
+      </font>
+    </div>
+    <div class="button_container">
+      <input class="button_email_recover" id="button_new_recover" type="button" value = "Enter" ng-click="new_password_recover(new_password, new_password1)"
+       ng-disabled = "login_form.new_password.$invalid || login_form.new_password.$invalid || login_form.new_password1.$invalid || login_form.new_password1.$invalid" />
     </div>
   </div>
 </div>

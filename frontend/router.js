@@ -65,11 +65,23 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: "frontend/modules/login/views/login.html", 
         controller: "ctrl_login",
     
+    }).when ("/logout", {
+        templateUrl: "frontend/modules/login/views/login.html", 
+        controller: "ctrl_login",
+    
     }).when ("/register", {
         templateUrl: "frontend/modules/login/views/register.html", 
         controller: "ctrl_login",
     
     }).when ("/verify/:token", {
+        templateUrl: "frontend/modules/login/views/login.html", 
+        controller: "ctrl_login",
+    
+    }).when ("/recover", {
+        templateUrl: "frontend/modules/login/views/login.html", 
+        controller: "ctrl_login",
+    
+    }).when ("/recover/:token", {
         templateUrl: "frontend/modules/login/views/login.html", 
         controller: "ctrl_login",
     
@@ -91,8 +103,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-app.run(function($rootScope, services, services_search, services_login){ 
-    console.log("HOLLAAAA_ RUN");
+app.run(function($rootScope, services, services_search, services_login, services_activity){ 
     if(localStorage.token){
         $rootScope.button_logout = true;
         $rootScope.button_login = false;
@@ -100,11 +111,13 @@ app.run(function($rootScope, services, services_search, services_login){
         var toke = toke.substring(1, toke.length - 1);
         console.log(toke);
         services_login.user_data(toke);
+        services_activity.protectactivity();
     }else{
         $rootScope.button_login = true;
         $rootScope.button_logout = false;
     }
 
+    $rootScope.show_page = true;
     services_search.load_type();
 
     $rootScope.load_model = function(type) {

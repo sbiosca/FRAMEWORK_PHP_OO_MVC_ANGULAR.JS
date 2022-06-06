@@ -607,12 +607,32 @@ body {
      top: -5.6cm;
    }
 
+   /*RECOVER*/
+   .form_content {
+     position: relative;
+     top: 2cm;
+     left: 2cm;
+   }
+   .button_email_recover {
+    position: relative;
+    right: 16.8cm;
+    top: 2cm;
+   }
+   #email_recover {
+     width: 6cm;
+   }
+
    /*LOGIN*/
    #logear {
     position: absolute;
     top: 0.3cm;
     right: -1cm;
    }
+   .button-logout {
+     position: relative;
+     top: -1cm;
+   }
+
 
    /*.img-avatar {
       position: relative;
@@ -628,6 +648,7 @@ body {
     height: 1.7cm;
     position: relative;
     left: 1cm;
+    top: -0.5cm;
    }
 
    .buttonlogin, .button-logout {
@@ -652,12 +673,10 @@ body {
 	  background-color:#5cb811;
    }
 
-   .buttonlogin:active, .button-logout:active {
-    position:relative;
-    top:1px;
-   }
    
    
+   
+
 /* AVATAR POPUP*/
    #popup-user {
     position: absolute;

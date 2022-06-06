@@ -36,17 +36,20 @@
       </font>
       </div>
       <div class="form__input">
-        <input type="password" placeholder="Repeat Password" id="password1" name="password1" ng-model="password1" required ng-pattern="regex_password">
+        <input type="password" placeholder="Repeat Password" id="password1" name="password1" ng-model="password1" required ng-pattern="regex_password"
+        ng-minlength="5">
         <br>
         <font color="red">
           <span id="error_password" class="error" ng-show="register_form.password1.$error.required && (register_form.password1.$dirty ||
           register_form.password1.$touched)">Introduzca una contraseña</span>
           <span id="error_password" class="error" ng-show="register_form.password1.$error.minlength">Contraseña no segura</span>
-          <span id="error_password1" class="error" ng-show="error_password_double"></span>
+          <span id="error_password1" class="error" ng-show="error_password_double">Contraseñas no coinciden</span>
         </font>
         </div>
       <div class="button_container">
-        <input class="button-login" id="register" type="button" value = "Enter" ng-click="register()"/>
+        <input class="button-login" id="register" type="button" value = "Enter" ng-click="register()" 
+          ng-disabled = "register_form.username.$invalid || register_form.password.$invalid || register_form.email.$invalid
+          || register_form.password1.$invalid"/>
       </div>
       
     </div>

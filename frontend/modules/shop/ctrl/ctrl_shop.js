@@ -104,11 +104,18 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     }
     $scope.details = function(id) {
         location.href = '#/details/:'+id;
-        //$rootScope.id = id;
     }
     
     $scope.remove_filters = function() {
         services_shop.remove_filters();
+    }
+
+    $scope.click_like = function(id) {
+        console.log(id);
+        services_shop.click_like();
+        if (!localStorage.getItem("token")) {
+            console.log("NO TOKEN");
+        }
     }
 
     let path = $route.current.originalPath.split('/');

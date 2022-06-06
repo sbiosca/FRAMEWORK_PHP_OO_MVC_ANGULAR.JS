@@ -69,7 +69,12 @@
 					return "error";
 				}
 			}else {
-				return "error_mail";
+				if ($email){
+					return "error_mail";
+				}
+				if ($args[1]!=$args[3]) {
+					return "false";
+				}
 			}
 		}
 		public function get_verify_email_BLL($args) {

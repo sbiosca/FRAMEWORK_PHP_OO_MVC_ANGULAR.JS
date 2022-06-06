@@ -2,7 +2,8 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
 
     let service = {list_cars: list_cars, filter_car: filter_car, print_filter_car: print_filter_car, 
                     load_pagination1: load_pagination1, load_pagination2: load_pagination2, details: details, 
-                    mapbox: mapbox ,details_map: details_map, more_cars: more_cars, remove_filters: remove_filters};
+                    mapbox: mapbox ,details_map: details_map, more_cars: more_cars, remove_filters: remove_filters
+                    ,click_like: click_like};
     return service;
 
     function list_cars(pagi, items = 0) {
@@ -137,7 +138,8 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
        window.location.reload();
    }
    
-
-
+   function click_like() {
+       
+   }
 
 }]);
