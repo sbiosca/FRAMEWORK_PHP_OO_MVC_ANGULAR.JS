@@ -111,11 +111,9 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     }
 
     $scope.click_like = function(id) {
-        console.log(id);
-        services_shop.click_like();
-        if (!localStorage.getItem("token")) {
-            console.log("NO TOKEN");
-        }
+        var toke = localStorage.token.replace(/['\"]+/g, '');
+        var toke = toke.substring(1, toke.length - 1);
+        services_shop.click_like(id, toke);
     }
 
     let path = $route.current.originalPath.split('/');
@@ -127,6 +125,7 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
         $scope.show_only_car = false;
         $scope.show_list_car = true;
         $scope.show_pagination = true;
+        $scope.not_like = true;
         if (localStorage.getItem("filters")) {
             console.log("FILTROS LOCALSTORAGE");
             var filtros = JSON.parse(localStorage.filters);

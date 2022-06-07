@@ -1,4 +1,4 @@
-app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
+app.factory('services_shop', ['services', '$rootScope','toastr', function(services, $rootScope, toastr) {
 
     let service = {list_cars: list_cars, filter_car: filter_car, print_filter_car: print_filter_car, 
                     load_pagination1: load_pagination1, load_pagination2: load_pagination2, details: details, 
@@ -138,8 +138,28 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
        window.location.reload();
    }
    
-   function click_like() {
-       
+   function click_like(id, token = undefined) {
+       console.log(token)
+       if (!token) {
+            toastr.error("Debes iniciar sesion");
+            location.href = "#/login/:"+id;
+       }
+        services.post('shop', 'load_likes', {id: id, user: token})
+        .then(function(response) {
+           console.log(response);
+           if (response == '"LIKE"') {
+                toastr.success("LIKE REALIZADO CON ÉXITO");
+                $rootScope.like = true;
+                $rootScope.not_like = false;
+                
+           }else {
+                toastr.success("DISLIKE REALIZADO CON ÉXITO");
+                $rootScope.like = false;
+                $rootScope.not_like = true;
+           }
+        }, function(error) {
+            console.log(error);
+        });
    }
 
 }]);

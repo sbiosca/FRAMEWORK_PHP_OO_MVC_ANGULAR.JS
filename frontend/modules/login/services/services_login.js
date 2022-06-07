@@ -15,7 +15,7 @@ app.factory('services_login', ['services', '$rootScope', 'toastr','services_loca
          });
     }
     
-    function login(user, passwd) {
+    function login(user, passwd, token = undefined) {
         services.post('login', 'login', {username: user, password: passwd})
         .then(function(response) {
             console.log(response);
@@ -23,7 +23,12 @@ app.factory('services_login', ['services', '$rootScope', 'toastr','services_loca
                 $rootScope.error_password_red = false;
                 toastr.success("Log In Correctamente");
                 services_localstorage.login_setToken(response);
-                location.href= "#/home";
+                if (!token) {
+                    location.href= "#/home";
+                }else {
+                    location.href= "#/shop";               
+                }
+                
                 window.location.reload();
             }else {
                 $rootScope.error_password_red = true;

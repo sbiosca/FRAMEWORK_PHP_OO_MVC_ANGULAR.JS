@@ -65,6 +65,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: "frontend/modules/login/views/login.html", 
         controller: "ctrl_login",
     
+    }).when ("/login/:id", {
+        templateUrl: "frontend/modules/login/views/login.html", 
+        controller: "ctrl_login",
+    
     }).when ("/logout", {
         templateUrl: "frontend/modules/login/views/login.html", 
         controller: "ctrl_login",

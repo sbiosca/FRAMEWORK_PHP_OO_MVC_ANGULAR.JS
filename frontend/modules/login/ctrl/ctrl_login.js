@@ -4,7 +4,11 @@ app.controller('ctrl_login', function($scope, services_login,  $route, services_
     $scope.regex_password = /^[A-Za-z0-9._-]{5,20}$/;
 
     $scope.login = function() {
-        services_login.login($scope.username, $scope.password);
+        if ($route.current.params.id) {
+            services_login.login($scope.username, $scope.password, $route.current.params.id);
+        }else {
+            services_login.login($scope.username, $scope.password);
+        }
     }
 
     $scope.register = function() {

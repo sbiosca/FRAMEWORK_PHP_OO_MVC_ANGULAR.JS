@@ -768,6 +768,15 @@ body {
     color: red;
   }
 
+  #like_red {
+    color: #000;
+    position: relative;
+    right: -5cm;
+    top: 0.16cm;
+    font-size: 50px;
+    color: red;
+  }
+
 
   /*CARROUSEL*/
 
