@@ -3,7 +3,7 @@ app.factory('services_shop', ['services', '$rootScope','toastr', function(servic
     let service = {list_cars: list_cars, filter_car: filter_car, print_filter_car: print_filter_car, 
                     load_pagination1: load_pagination1, load_pagination2: load_pagination2, details: details, 
                     mapbox: mapbox ,details_map: details_map, more_cars: more_cars, remove_filters: remove_filters
-                    ,click_like: click_like};
+                    ,click_like: click_like, read_likes: read_likes, read_likes_user:read_likes_user};
     return service;
 
     function list_cars(pagi, items = 0) {
@@ -14,6 +14,7 @@ app.factory('services_shop', ['services', '$rootScope','toastr', function(servic
             $rootScope.cars = response;
             console.log($rootScope.cars);
             mapbox(response);
+            read_likes(response)
         }, function(error) {
             console.log(error);
         });
@@ -143,23 +144,77 @@ app.factory('services_shop', ['services', '$rootScope','toastr', function(servic
        if (!token) {
             toastr.error("Debes iniciar sesion");
             location.href = "#/login/:"+id;
-       }
-        services.post('shop', 'load_likes', {id: id, user: token})
+       }else {
+            var social_google = "google"
+            var social_github = "github"
+            if (token.includes(social_github)) {
+                var jwt = "NO";
+            }else if (token.includes(social_google)) {
+                var jwt = "NO";
+            }else {
+                var jwt = "YES";
+            }
+            services.post('shop', 'load_likes', {id: id, user: token, jwt: jwt})
+            .then(function(response) {
+            console.log(response);
+            if (response == '"LIKE"') {
+                    toastr.success("LIKE REALIZADO CON ÉXITO");  
+                    $rootScope.liked = id;
+                    localStorage.setItem('likes','like');
+            }else {
+                    toastr.success("DISLIKE REALIZADO CON ÉXITO");
+                    $rootScope.liked = null;
+                    localStorage.removeItem('likes');
+            }
+            }, function(error) {
+                console.log(error);
+            });
+        }
+   }
+
+   function read_likes(response) {
+       console.log("HOLA_READLIKEs");
+        var toke = localStorage.token.replace(/['\"]+/g, '');
+        var toke = toke.substring(1, toke.length - 1);
+        if (toke) {
+            read_likes_user(response,toke);
+        }
+   }
+
+   function read_likes_user(response,user) {
+    console.log(response);
+    console.log(user);
+    $rootScope.favs = response;
+
+    for (row in $rootScope.favs) {
+        console.log($rootScope.favs[row].enrolment);
+        var car = $rootScope.favs[row].enrolment;
+            var social_google = "google"
+            var social_github = "github"
+            if (user.includes(social_github)) {
+                var jwt = "NO";
+            }else if (user.includes(social_google)) {
+                var jwt = "NO";
+            }else {
+                var jwt = "YES";
+            }
+        services.post('shop', 'read_likes', {id: car, user: user, jwt: jwt})
         .then(function(response) {
-           console.log(response);
-           if (response == '"LIKE"') {
-                toastr.success("LIKE REALIZADO CON ÉXITO");
-                $rootScope.like = true;
-                $rootScope.not_like = false;
-                
-           }else {
-                toastr.success("DISLIKE REALIZADO CON ÉXITO");
-                $rootScope.like = false;
-                $rootScope.not_like = true;
-           }
+            console.log(response);
+            if (response.length == '0') {
+                console.log("NOT LIKE");
+            }else {
+                for (row in response) {
+                    var id = response[row].enrolment
+                    $rootScope.liked = id;
+                    console.log("LIKE");
+                }
+                     
+            }   
         }, function(error) {
             console.log(error);
         });
+    }
    }
 
 }]);

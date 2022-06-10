@@ -46,6 +46,13 @@ El proyecto esta dividido en los siguientes 5 modulos:
 ***
 Diferentes funciones de cada módulo:
 1. Módulo Shop, services shop:
-    > Function; list_cars, filter_car, print_filter_car, load_pagination1, load_pagination2, details, mapbox ,details_map, more_cars, remove_filters
+    > Function; list_cars, filter_car, print_filter_car, load_pagination1, load_pagination2, details, mapbox ,details_map, more_cars, remove_filters, click_likes, read_likes
 2. Módulo Home, ctrl home:
     > Function; carrousel_brand, category, type
+3. Módulo Contact, ctrl contact:
+    > Function; send_email
+4. Módulo Login, services login, services_activity, services_localstorage, services_socialogin:
+    > avatar, login, logout, register, verify, user_data, recover_password, new_password_recover
+    > protectactivity, protecturl, regenerate_token, refresh_cookies
+    > login_setToken, logout_remove
+    > firebase_config, social_login, provider_config

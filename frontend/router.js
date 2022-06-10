@@ -33,20 +33,6 @@ app.config(['$routeProvider', function ($routeProvider) {
                     return services.get('shop','count_pagination');
                 }
             } 
-    }).when ("/shop/not", {
-        templateUrl: "frontend/modules/shop/views/shop.html", 
-        controller: "ctrl_shop",
-        resolve: {
-                list_cars: function (services) {
-                    return services.get('shop','list_cars');
-                },
-                filters: function (services) {
-                    return services.get('shop','filters');                
-                },
-                pagi: function (services) {
-                    return services.get('shop','count_pagination');
-                }
-            } 
     }).when ("/details/:id", {
         templateUrl: "frontend/modules/shop/views/shop.html", 
         controller: "ctrl_shop",

@@ -626,7 +626,7 @@ body {
    #logear {
     position: absolute;
     top: 0.3cm;
-    right: -1cm;
+    right: -3cm;
    }
    .button-logout {
      position: relative;
@@ -644,11 +644,11 @@ body {
    .avatar {
     border: 5px outset #18A415;
     border-radius: 15px;
-    width: 1.7cm;
-    height: 1.7cm;
+    width: 1.5cm;
+    height: 1.5cm;
     position: relative;
     left: 1cm;
-    top: -0.5cm;
+    top: -0.9cm;
    }
 
    .buttonlogin, .button-logout {
@@ -692,6 +692,14 @@ body {
   .user-avatar {
     font-size: 100%;
     color: #000;
+  }
+
+  .username-profile {
+    border: 3.2px outset #18A415;
+    border-radius: 15px;
+    position: relative;
+    left: -0.8cm;
+    top: -0.5cm;
   }
   
    /*PAGINATION*/
@@ -768,11 +776,11 @@ body {
     color: red;
   }
 
-  #like_red {
+  .like_red {
     color: #000;
     position: relative;
     right: -5cm;
-    top: 0.16cm;
+    top: 0.8cm;
     font-size: 50px;
     color: red;
   }

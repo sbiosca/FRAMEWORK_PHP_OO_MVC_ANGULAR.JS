@@ -1,4 +1,4 @@
-app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, type/*, loadall, news*/,services_shop) {
+app.controller('ctrl_home', function($scope, $window, carrousel_brand, categ, type,services_shop) {
   
   $scope.carrousels = carrousel_brand;
   $scope.categs = categ;

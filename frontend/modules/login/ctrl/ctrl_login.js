@@ -1,4 +1,4 @@
-app.controller('ctrl_login', function($scope, services_login,  $route, services_socialogin/*, $rootScope, services, , toastr*/) {
+app.controller('ctrl_login', function($scope, services_login,  $route, services_socialogin) {
     $scope.regex_username = /^[A-Za-z0-9._-]{5,15}$/;
     $scope.regex_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     $scope.regex_password = /^[A-Za-z0-9._-]{5,20}$/;
@@ -53,6 +53,7 @@ app.controller('ctrl_login', function($scope, services_login,  $route, services_
     }else if (path[1] === 'verify') {
         console.log($route.current.params.token);
         services_login.verify($route.current.params.token);
+        $scope.form_login = true;
     }else if (path[1] === 'recover') {
         console.log($route.current.params.token);
         if ($route.current.params.token) {

@@ -1,102 +1,9 @@
-/*
-
-function read_likes_user(data,user) {
-    console.log(data);
-    console.log();
-    for (row in data) {
-        console.log(data[row].enrolment);
-        var car = data[row].enrolment;
-        var token = user.replace(/['"]+/g, '');
-        ajaxPromise('?modules=shop&op=read_likes', 'POST', 'JSON', {id: car, user: token})
-        .then(function(data){
-            console.log(data);
-            if (data[0].enrolment == null) {
-                console.log("NO LIKE");
-                //click_likes(user,data[0].likes);
-            }else {
-                console.log(data[0].enrolment)
-                var likee = document.getElementById(data[0].enrolment + "1");
-                console.log(likee);
-                likee.style.color = '#FF0000';
-                //click_likes(user,data[0].likes);
-            }
-            //
-        }).catch(function(eerr){
-            console.log(eerr);
-        });   
-    }
-    
-}
-
-function click_likes(user){
-    $(document).on("click",".div-likes",function() {
-        $('<p></p>').attr('class',"icon-like").appendTo(".caret")
-            .html("")
-            var id = this.getAttribute('id');
-            if (user == null) {
-                toastr.error("DEBES INICIAR SESION PARA HACER LIKE", {
-                    "timeOut": "5",
-                    "extendedTimeout" : "5"
-                }
-                );
-                var url = "?modules=login&op=list_login&log=" + id;
-                window.location.href = url;
-                var url = "?modules=shop&op=view&log=" + id;
-                localStorage.setItem('url',url);
-            }
-            var token = user.replace(/['"]+/g, '');
-            console.log(token);
-            
-        ajaxPromise('?modules=shop&op=load_likes', 'POST', 'JSON', {id: id, user: token})
-        .then(function(data){
-            console.log(data);
-            if (data == "LIKE") {
-                var likee = document.getElementById(id + "1");
-                console.log(likee);
-                likee.style.color = '#FF0000';
-                toastr.success("LIKE REALIZADO CON ÉXITO!");
-                localStorage.setItem('likes','like');
-            }
-            else {
-                var likee = document.getElementById(id + "1");
-                console.log(likee);
-                likee.style.color = '#808080';
-                toastr.success("DISLIKE REALIZADO CON ÉXITO!");
-                //localStorage.removeItem('likes');
-            }
-            //
-        }).catch(function(error){
-            console.log(error);
-        });
-    });
-
-}
-
-function read_likes(data){
-    var user = localStorage.getItem("token")
-   
-    if (user) {
-        console.log("logeado");
-        click_likes(user);
-        var mg = localStorage.getItem('likes')
-        if (mg) {
-            read_likes_user(data,user);
-        }
-        
-    }else {
-        console.log("no log");
-        click_likes();
-    }
-
-}
-*/
-
 app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filters, pagi, services_shop) {
 
     $scope.list = list_cars;
     $scope.filters = filters;
     $scope.pagination = pagi;
-
+    
     console.log(filters);
    
     $scope.filter_cars = function(brand_name, model_name, color) {
@@ -111,8 +18,11 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
     }
 
     $scope.click_like = function(id) {
-        var toke = localStorage.token.replace(/['\"]+/g, '');
-        var toke = toke.substring(1, toke.length - 1);
+        if (localStorage.getItem("token")) {
+            var toke = localStorage.token.replace(/['\"]+/g, '');
+            var toke = toke.substring(1, toke.length - 1);
+        }
+        
         services_shop.click_like(id, toke);
     }
 
@@ -125,7 +35,6 @@ app.controller('ctrl_shop', function($scope, $rootScope, $route, list_cars, filt
         $scope.show_only_car = false;
         $scope.show_list_car = true;
         $scope.show_pagination = true;
-        $scope.not_like = true;
         if (localStorage.getItem("filters")) {
             console.log("FILTROS LOCALSTORAGE");
             var filtros = JSON.parse(localStorage.filters);

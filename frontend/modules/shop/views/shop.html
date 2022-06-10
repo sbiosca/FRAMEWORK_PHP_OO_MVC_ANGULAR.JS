@@ -3,11 +3,10 @@
 <div id="cars" class="all_cars" ng-show="show_list_car">
     <div class="services__content" ng-repeat="car in cars">
         <div class="cars_elements">
-            <div class="caret" id="" ng-show="show_cars">
+            <div class="caret" id="{{car.enrolment}}" ng-show="show_cars" >
                 <p id="p_img"><img id="{{car.enrolment}}" class="img_car" src="frontend/views/images/cars/{{car.car_img}}" ng-click="details(car.enrolment)" style="max-width: 100%;"></img></p>
-                <div class="div-likes" id="">
-                    <p id="" class="icon-like" ng-show="not_like" ng-click="click_like(car.enrolment)">&#x2665</p>
-                    <p id="like_red" class="icon-like" ng-show="like" ng-click="click_like(car.enrolment)">&#x2665</p>
+                <div class="div-likes" id="" >
+                    <p id="{{car.enrolment}}" ng-class="{'icon-like': liked != car.enrolment , 'like_red': liked == car.enrolment}" ng-click="click_like(car.enrolment)">&#x2665</p>
                 </div><br>
                 <p id="p_price">{{car.price}}€</p><br>
                 <p id="p_brand">{{car.brand_name}} {{car.model_name}}</p><br>
@@ -19,7 +18,6 @@
     <div id="form" class="form">
         <form autocomplete="on" method="post" name="filter" id="filter"></form>
         <div class='div_form'>
-            <!--<select class='brandss' id='selc' ng-model="select_brand" ng-change="filter_cars(select_brand)">-->
             <select class='brandss' id='selc' ng-model="select_brand" >
                 <optgroup id='bran' class='select1' label='ALL BRANDS' >
                     <option value="" >SELECT THE BRAND</option>
